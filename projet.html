@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mes Compétences</title>
+    <title>Mes Projets</title>
     <style>
         /* Style général */
         body {
@@ -27,7 +27,7 @@
             width: 100%;
         }
 
-        .skill-card {
+        .project-card {
             position: relative;
             overflow: hidden;
             border-radius: 20px; /* Angles arrondis */
@@ -40,30 +40,37 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            text-align: center;
         }
 
-        .skill-card img {
-            width: 80px; /* Taille de l'icône */
-            height: 80px;
-            margin-bottom: 20px;
+        .project-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ajuste l'image pour couvrir la zone */
+            border-radius: 20px; /* Angles arrondis */
             transition: transform 0.3s ease;
         }
 
-        .skill-card h3 {
-            font-size: 1.5rem; /* Taille du titre */
+        .project-card h3 {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
             margin: 0;
+            padding: 15px;
+            background-color: rgba(0, 0, 0, 0.7); /* Fond semi-transparent pour le titre */
             color: #fff;
-            transition: color 0.3s ease;
+            text-align: center;
+            font-size: 1.5rem; /* Taille du titre augmentée */
+            transition: background-color 0.3s ease;
         }
 
         /* Effet de survol */
-        .skill-card:hover img {
-            transform: scale(1.1); /* Zoom sur l'icône au survol */
+        .project-card:hover img {
+            transform: scale(1.1); /* Zoom sur l'image au survol */
         }
 
-        .skill-card:hover h3 {
-            color: #007BFF; /* Changement de couleur du titre au survol */
+        .project-card:hover h3 {
+            background-color: rgba(0, 0, 0, 0.9); /* Fond plus foncé au survol */
         }
 
         /* Fenêtre de détails */
@@ -115,64 +122,109 @@
 </head>
 <body>
     <div class="container">
-        <!-- Compétence 1 : Maintenir -->
-        <div class="skill-card" onclick="showDetails('details1')">
-            <img src="https://cdn-icons-png.flaticon.com/512/4260/4260892.png" alt="Maintenir">
-            <h3>Maintenir</h3>
+        <!-- Projet 1 -->
+        <div class="project-card" onclick="showDetails('details1')">
+            <img src="https://via.placeholder.com/400x400" alt="Projet 1">
+            <h3>Projet 1</h3>
         </div>
 
-        <!-- Compétence 2 : Vérifier -->
-        <div class="skill-card" onclick="showDetails('details2')">
-            <img src="https://cdn-icons-png.flaticon.com/512/4260/4260895.png" alt="Vérifier">
-            <h3>Vérifier</h3>
+        <!-- Projet 2 -->
+        <div class="project-card" onclick="showDetails('details2')">
+            <img src="https://via.placeholder.com/400x400" alt="Projet 2">
+            <h3>Projet 2</h3>
         </div>
 
-        <!-- Compétence 3 : Implanter -->
-        <div class="skill-card" onclick="showDetails('details3')">
-            <img src="https://cdn-icons-png.flaticon.com/512/4260/4260898.png" alt="Implanter">
-            <h3>Implanter</h3>
+        <!-- Projet 3 -->
+        <div class="project-card" onclick="showDetails('details3')">
+            <img src="https://via.placeholder.com/400x400" alt="Projet 3">
+            <h3>Projet 3</h3>
         </div>
 
-        <!-- Compétence 4 : Concevoir -->
-        <div class="skill-card" onclick="showDetails('details4')">
-            <img src="https://cdn-icons-png.flaticon.com/512/4260/4260901.png" alt="Concevoir">
-            <h3>Concevoir</h3>
+        <!-- Projet 4 -->
+        <div class="project-card" onclick="showDetails('details4')">
+            <img src="https://via.placeholder.com/400x400" alt="Projet 4">
+            <h3>Projet 4</h3>
+        </div>
+
+        <!-- Projet 5 -->
+        <div class="project-card" onclick="showDetails('details5')">
+            <img src="https://via.placeholder.com/400x400" alt="Projet 5">
+            <h3>Projet 5</h3>
+        </div>
+
+        <!-- Projet 6 -->
+        <div class="project-card" onclick="showDetails('details6')">
+            <img src="https://via.placeholder.com/400x400" alt="Projet 6">
+            <h3>Projet 6</h3>
+        </div>
+
+        <!-- Projet 7 -->
+        <div class="project-card" onclick="showDetails('details7')">
+            <img src="https://via.placeholder.com/400x400" alt="Projet 7">
+            <h3>Projet 7</h3>
         </div>
     </div>
 
-    <!-- Fenêtre de détails pour Compétence 1 : Maintenir -->
+    <!-- Fenêtre de détails pour Projet 1 -->
     <div id="details1" class="details-overlay">
         <div class="details-content">
             <span class="close-btn" onclick="closeDetails('details1')">&times;</span>
-            <h2>Maintenir</h2>
-            <p>Compétence en maintenance des systèmes et applications. Capacité à diagnostiquer et résoudre les problèmes techniques pour assurer la continuité des services.</p>
+            <h2>Projet 1 : Site Web E-commerce</h2>
+            <p>Un site web e-commerce développé avec HTML, CSS et JavaScript. Intégration de paiements sécurisés et gestion des stocks.</p>
         </div>
     </div>
 
-    <!-- Fenêtre de détails pour Compétence 2 : Vérifier -->
+    <!-- Fenêtre de détails pour Projet 2 -->
     <div id="details2" class="details-overlay">
         <div class="details-content">
             <span class="close-btn" onclick="closeDetails('details2')">&times;</span>
-            <h2>Vérifier</h2>
-            <p>Expertise en vérification et validation des systèmes. Réalisation de tests approfondis pour garantir la qualité et la fiabilité des solutions mises en place.</p>
+            <h2>Projet 2 : Application Mobile</h2>
+            <p>Une application mobile de gestion de tâches développée avec React Native. Synchronisation en temps réel avec Firebase.</p>
         </div>
     </div>
 
-    <!-- Fenêtre de détails pour Compétence 3 : Implanter -->
+    <!-- Fenêtre de détails pour Projet 3 -->
     <div id="details3" class="details-overlay">
         <div class="details-content">
             <span class="close-btn" onclick="closeDetails('details3')">&times;</span>
-            <h2>Implanter</h2>
-            <p>Compétence en déploiement de solutions techniques. Gestion de l'intégration et de la configuration des systèmes pour une mise en production efficace.</p>
+            <h2>Projet 3 : Dashboard Analytique</h2>
+            <p>Un tableau de bord analytique pour visualiser des données en temps réel. Développé avec Python, Django et Chart.js.</p>
         </div>
     </div>
 
-    <!-- Fenêtre de détails pour Compétence 4 : Concevoir -->
+    <!-- Fenêtre de détails pour Projet 4 -->
     <div id="details4" class="details-overlay">
         <div class="details-content">
             <span class="close-btn" onclick="closeDetails('details4')">&times;</span>
-            <h2>Concevoir</h2>
-            <p>Capacité à concevoir des architectures techniques robustes et évolutives. Création de solutions innovantes répondant aux besoins spécifiques des utilisateurs.</p>
+            <h2>Projet 4 : Blog Personnel</h2>
+            <p>Un blog personnel développé avec WordPress. Personnalisation du thème et intégration de plugins SEO.</p>
+        </div>
+    </div>
+
+    <!-- Fenêtre de détails pour Projet 5 -->
+    <div id="details5" class="details-overlay">
+        <div class="details-content">
+            <span class="close-btn" onclick="closeDetails('details5')">&times;</span>
+            <h2>Projet 5 : Jeu Vidéo</h2>
+            <p>Un jeu vidéo en 2D développé avec Unity. Conception des niveaux et programmation des mécaniques de jeu.</p>
+        </div>
+    </div>
+
+    <!-- Fenêtre de détails pour Projet 6 -->
+    <div id="details6" class="details-overlay">
+        <div class="details-content">
+            <span class="close-btn" onclick="closeDetails('details6')">&times;</span>
+            <h2>Projet 6 : Application Web</h2>
+            <p>Une application web de gestion de projets développée avec React et Node.js. Fonctionnalités de collaboration en temps réel.</p>
+        </div>
+    </div>
+
+    <!-- Fenêtre de détails pour Projet 7 -->
+    <div id="details7" class="details-overlay">
+        <div class="details-content">
+            <span class="close-btn" onclick="closeDetails('details7')">&times;</span>
+            <h2>Projet 7 : Portfolio</h2>
+            <p>Un portfolio en ligne pour présenter mes projets et compétences. Développé avec HTML, CSS et JavaScript.</p>
         </div>
     </div>
 
