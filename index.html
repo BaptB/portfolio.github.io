@@ -14,10 +14,8 @@
             color: #fff;
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
             min-height: 100vh;
-            text-align: center;
         }
 
         /* Bandeau de navigation */
@@ -27,7 +25,7 @@
             padding: 10px 20px;
             box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
             display: flex;
-            justify-content: center;
+            justify-content: flex-start; /* Alignement à gauche */
             position: fixed;
             top: 0;
             z-index: 1000;
@@ -82,10 +80,12 @@
             padding: 8px 12px;
         }
 
+        /* Contenu principal */
         .presentation-container {
             max-width: 800px;
             padding: 20px;
             margin-top: 80px; /* Pour éviter que le contenu soit caché sous le bandeau */
+            text-align: center;
         }
 
         .profile-picture {
@@ -246,6 +246,7 @@
         </ul>
     </nav>
 
+    <!-- Contenu principal -->
     <div class="presentation-container">
         <img src="https://via.placeholder.com/150" alt="Photo de profil" class="profile-picture">
         <h1>Bienvenue sur mon Portfolio</h1>
@@ -259,6 +260,7 @@
         </div>
     </div>
 
+    <!-- Pied de page -->
     <div class="footer">
         <button onclick="showContactModal()">Me contacter</button>
         <a href="CV_Brunner_Baptiste.pdf" download="CV_Brunner_Baptiste.pdf">
@@ -267,6 +269,7 @@
         <button onclick="window.open('CV_Brunner_Baptiste.pdf', '_blank')">Afficher mon CV</button>
     </div>
 
+    <!-- Modale de contact -->
     <div id="contactModal" class="modal" aria-hidden="true" aria-labelledby="modalTitle">
         <div class="modal-content">
             <p id="modalTitle">Coordonnées de contact</p>
