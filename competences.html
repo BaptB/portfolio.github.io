@@ -13,11 +13,74 @@
             background-color: #000; /* Fond noir */
             color: #fff; /* Texte en blanc */
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
             min-height: 100vh;
         }
 
+        /* Bandeau de navigation */
+        .navbar {
+            width: 100%;
+            background-color: #222; /* Fond sombre pour le bandeau */
+            padding: 10px 20px;
+            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: center;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+        }
+
+        .navbar ul li {
+            position: relative;
+        }
+
+        .navbar ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.1rem;
+            padding: 10px 15px;
+            transition: color 0.3s ease;
+        }
+
+        .navbar ul li a:hover {
+            color: #007BFF; /* Changement de couleur au survol */
+        }
+
+        /* Sous-menus */
+        .navbar ul li ul {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #333;
+            border-radius: 5px;
+            padding: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .navbar ul li:hover ul {
+            display: block;
+        }
+
+        .navbar ul li ul li {
+            margin: 5px 0;
+        }
+
+        .navbar ul li ul li a {
+            font-size: 1rem;
+            padding: 8px 12px;
+        }
+
+        /* Contenu principal */
         .container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Grille responsive */
@@ -25,6 +88,7 @@
             padding: 20px;
             max-width: 1200px;
             width: 100%;
+            margin-top: 80px; /* Pour éviter que le contenu soit caché sous le bandeau */
         }
 
         .skill-card {
@@ -114,6 +178,29 @@
     </style>
 </head>
 <body>
+    <!-- Bandeau de navigation -->
+    <nav class="navbar">
+        <ul>
+            <li><a href="#">Accueil</a></li>
+            <li>
+                <a href="#">Présentation Professionnelle</a>
+                <ul>
+                    <li><a href="#">Études</a></li>
+                    <li><a href="#">Compétences</a></li>
+                    <li><a href="#">Projets</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Présentation Personnelle</a>
+                <ul>
+                    <li><a href="#">Hobby</a></li>
+                    <li><a href="#">Qui suis-je ?</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Contenu principal -->
     <div class="container">
         <!-- Compétence 1 : Maintenir -->
         <div class="skill-card" onclick="showDetails('details1')">
