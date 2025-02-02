@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mes Compétences</title>
+    <style>
+        /* Style général */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #000; /* Fond noir */
+            color: #fff; /* Texte en blanc */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Grille responsive */
+            gap: 20px;
+            padding: 20px;
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        .skill-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px; /* Angles arrondis */
+            background-color: #222; /* Fond sombre pour les cartes */
+            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1); /* Ombre claire */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            aspect-ratio: 1 / 1; /* Carrés parfaits */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .skill-card img {
+            width: 80px; /* Taille de l'icône */
+            height: 80px;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .skill-card h3 {
+            font-size: 1.5rem; /* Taille du titre */
+            margin: 0;
+            color: #fff;
+            transition: color 0.3s ease;
+        }
+
+        /* Effet de survol */
+        .skill-card:hover img {
+            transform: scale(1.1); /* Zoom sur l'icône au survol */
+        }
+
+        .skill-card:hover h3 {
+            color: #007BFF; /* Changement de couleur du titre au survol */
+        }
+
+        /* Fenêtre de détails */
+        .details-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9); /* Fond noir semi-transparent */
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .details-content {
+            background-color: #222; /* Fond sombre pour les détails */
+            padding: 20px;
+            border-radius: 20px; /* Angles arrondis */
+            max-width: 600px;
+            width: 90%;
+            position: relative;
+            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+            color: #fff; /* Texte en blanc */
+        }
+
+        .details-content h2 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .details-content p {
+            font-size: 1.1rem;
+            color: #ccc; /* Texte gris clair */
+            margin-bottom: 20px;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 1.5rem;
+            color: #fff;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Compétence 1 : Maintenir -->
+        <div class="skill-card" onclick="showDetails('details1')">
+            <img src="https://cdn-icons-png.flaticon.com/512/4260/4260892.png" alt="Maintenir">
+            <h3>Maintenir</h3>
+        </div>
+
+        <!-- Compétence 2 : Vérifier -->
+        <div class="skill-card" onclick="showDetails('details2')">
+            <img src="https://cdn-icons-png.flaticon.com/512/4260/4260895.png" alt="Vérifier">
+            <h3>Vérifier</h3>
+        </div>
+
+        <!-- Compétence 3 : Implanter -->
+        <div class="skill-card" onclick="showDetails('details3')">
+            <img src="https://cdn-icons-png.flaticon.com/512/4260/4260898.png" alt="Implanter">
+            <h3>Implanter</h3>
+        </div>
+
+        <!-- Compétence 4 : Concevoir -->
+        <div class="skill-card" onclick="showDetails('details4')">
+            <img src="https://cdn-icons-png.flaticon.com/512/4260/4260901.png" alt="Concevoir">
+            <h3>Concevoir</h3>
+        </div>
+    </div>
+
+    <!-- Fenêtre de détails pour Compétence 1 : Maintenir -->
+    <div id="details1" class="details-overlay">
+        <div class="details-content">
+            <span class="close-btn" onclick="closeDetails('details1')">&times;</span>
+            <h2>Maintenir</h2>
+            <p>Compétence en maintenance des systèmes et applications. Capacité à diagnostiquer et résoudre les problèmes techniques pour assurer la continuité des services.</p>
+        </div>
+    </div>
+
+    <!-- Fenêtre de détails pour Compétence 2 : Vérifier -->
+    <div id="details2" class="details-overlay">
+        <div class="details-content">
+            <span class="close-btn" onclick="closeDetails('details2')">&times;</span>
+            <h2>Vérifier</h2>
+            <p>Expertise en vérification et validation des systèmes. Réalisation de tests approfondis pour garantir la qualité et la fiabilité des solutions mises en place.</p>
+        </div>
+    </div>
+
+    <!-- Fenêtre de détails pour Compétence 3 : Implanter -->
+    <div id="details3" class="details-overlay">
+        <div class="details-content">
+            <span class="close-btn" onclick="closeDetails('details3')">&times;</span>
+            <h2>Implanter</h2>
+            <p>Compétence en déploiement de solutions techniques. Gestion de l'intégration et de la configuration des systèmes pour une mise en production efficace.</p>
+        </div>
+    </div>
+
+    <!-- Fenêtre de détails pour Compétence 4 : Concevoir -->
+    <div id="details4" class="details-overlay">
+        <div class="details-content">
+            <span class="close-btn" onclick="closeDetails('details4')">&times;</span>
+            <h2>Concevoir</h2>
+            <p>Capacité à concevoir des architectures techniques robustes et évolutives. Création de solutions innovantes répondant aux besoins spécifiques des utilisateurs.</p>
+        </div>
+    </div>
+
+    <script>
+        // Fonction pour afficher les détails
+        function showDetails(detailsId) {
+            document.getElementById(detailsId).style.display = "flex";
+        }
+
+        // Fonction pour fermer les détails
+        function closeDetails(detailsId) {
+            document.getElementById(detailsId).style.display = "none";
+        }
+
+        // Fermer la fenêtre de détails si on clique en dehors
+        window.onclick = function(event) {
+            if (event.target.classList.contains('details-overlay')) {
+                event.target.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
