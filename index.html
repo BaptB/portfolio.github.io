@@ -14,15 +14,77 @@
             color: #fff;
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
             min-height: 100vh;
             text-align: center;
         }
 
+        /* Bandeau de navigation */
+        .navbar {
+            width: 100%;
+            background-color: #222;
+            padding: 10px 20px;
+            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: center;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+        }
+
+        .navbar ul li {
+            position: relative;
+        }
+
+        .navbar ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.1rem;
+            padding: 10px 15px;
+            transition: color 0.3s ease;
+        }
+
+        .navbar ul li a:hover {
+            color: #007BFF;
+        }
+
+        /* Sous-menus */
+        .navbar ul li ul {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #333;
+            border-radius: 5px;
+            padding: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .navbar ul li:hover ul {
+            display: block;
+        }
+
+        .navbar ul li ul li {
+            margin: 5px 0;
+        }
+
+        .navbar ul li ul li a {
+            font-size: 1rem;
+            padding: 8px 12px;
+        }
+
         .presentation-container {
             max-width: 800px;
             padding: 20px;
+            margin-top: 80px;
         }
 
         .profile-picture {
@@ -93,74 +155,32 @@
         .footer button:hover {
             background-color: #0056b3;
         }
-
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-        }
-
-        .modal-content {
-            background-color: #222;
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-            max-width: 400px;
-            width: 90%;
-        }
-
-        .modal-content p {
-            font-size: 1.2rem;
-            color: #fff;
-            margin-bottom: 20px;
-        }
-
-        .modal-content a {
-            color: #007BFF;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .modal-content a:hover {
-            color: #0056b3;
-        }
-
-        .modal-content button {
-            background-color: #007BFF;
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            margin-top: 10px;
-        }
-
-        .modal-content button:hover {
-            background-color: #0056b3;
-        }
-
-        @media (max-width: 480px) {
-            h1 {
-                font-size: 2rem;
-            }
-            p {
-                font-size: 1rem;
-            }
-            .nav-links a {
-                padding: 10px 20px;
-                font-size: 1rem;
-            }
-        }
     </style>
 </head>
 <body>
+
+    <!-- Bandeau de navigation -->
+    <nav class="navbar">
+        <ul>
+            <li><a href="https://baptb.github.io/portfolio.github.io/">Accueil</a></li>
+            <li>
+                <a href="#">Présentation Professionnelle</a>
+                <ul>
+                    <li><a href="https://sites.google.com/view/portfolio-baptiste-brunner/presentation_pro">Présentation</a></li>
+                    <li><a href="https://baptb.github.io/portfolio.github.io/competences.html">Compétences</a></li>
+                    <li><a href="https://baptb.github.io/portfolio.github.io/projet.html">Projets</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Présentation Personnelle</a>
+                <ul>
+                    <li><a href="https://sites.google.com/view/portfolio-baptiste-brunner/presentation_perso">Hobby</a></li>
+                    <li><a href="#">Qui suis-je ?</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
     <div class="presentation-container">
         <img src="https://via.placeholder.com/150" alt="Photo de profil" class="profile-picture">
         <h1>Bienvenue sur mon Portfolio</h1>
@@ -169,8 +189,8 @@
             Ce portfolio a été conçu pour vous présenter qui je suis, tant sur le plan personnel que professionnel. Découvrez mes motivations, mes valeurs et mon parcours.
         </p>
         <div class="nav-links">
-            <a href="https://sites.google.com/view/portfolio-baptiste-brunner/presentation_pro" target="_blank" rel="noopener noreferrer">Présentation Professionnelle</a>
-            <a href="https://sites.google.com/view/portfolio-baptiste-brunner/presentation_perso" target="_blank" rel="noopener noreferrer">Présentation Personnelle</a>
+            <a href="https://sites.google.com/view/portfolio-baptiste-brunner/presentation_pro" target="_blank">Présentation Professionnelle</a>
+            <a href="https://sites.google.com/view/portfolio-baptiste-brunner/presentation_perso" target="_blank">Présentation Personnelle</a>
         </div>
     </div>
 
@@ -182,17 +202,16 @@
         <button onclick="window.open('CV_Brunner_Baptiste.pdf', '_blank')">Afficher mon CV</button>
     </div>
 
-    <div id="contactModal" class="modal" aria-hidden="true" aria-labelledby="modalTitle">
-        <div class="modal-content">
+    <div id="contactModal" class="modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.9); justify-content: center; align-items: center; z-index: 1000;">
+        <div class="modal-content" style="background-color: #222; padding: 20px; border-radius: 10px; text-align: center; max-width: 400px; width: 90%;">
             <p id="modalTitle">Coordonnées de contact</p>
             <p>Mon adresse e-mail : <strong>baptiste.brunner83@gmail.com</strong></p>
-            <p>Mon profil LinkedIn : <a href="https://www.linkedin.com/in/baptiste-brunner/" target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
-            <button onclick="closeContactModal()" aria-label="Fermer la fenêtre modale">Fermer</button>
+            <p>Mon profil LinkedIn : <a href="https://www.linkedin.com/in/baptiste-brunner/" target="_blank">LinkedIn</a></p>
+            <button onclick="closeContactModal()">Fermer</button>
         </div>
     </div>
 
     <script>
-        // Script pour la modale
         function showContactModal() {
             document.getElementById('contactModal').style.display = "flex";
         }
@@ -200,12 +219,7 @@
         function closeContactModal() {
             document.getElementById('contactModal').style.display = "none";
         }
-
-        window.onclick = function(event) {
-            if (event.target.classList.contains('modal')) {
-                event.target.style.display = "none";
-            }
-        }
     </script>
+
 </body>
 </html>
