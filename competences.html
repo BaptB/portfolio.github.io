@@ -108,25 +108,26 @@
         }
 
         .skill-card img {
-            width: 80px;
+            width: 80px; /* Taille de l'icône */
             height: 80px;
             margin-bottom: 20px;
             transition: transform 0.3s ease;
         }
 
         .skill-card h3 {
-            font-size: 1.5rem;
+            font-size: 1.5rem; /* Taille du titre */
             margin: 0;
             color: #fff;
             transition: color 0.3s ease;
         }
 
+        /* Effet de survol */
         .skill-card:hover img {
-            transform: scale(1.1);
+            transform: scale(1.1); /* Zoom sur l'icône au survol */
         }
 
         .skill-card:hover h3 {
-            color: #007BFF;
+            color: #007BFF; /* Changement de couleur du titre au survol */
         }
 
         /* Fenêtre de détails */
@@ -137,102 +138,45 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
+            background-color: rgba(0, 0, 0, 0.9); /* Fond noir semi-transparent */
             justify-content: center;
             align-items: center;
             z-index: 1000;
         }
 
         .details-content {
-            background-color: #222;
+            background-color: #222; /* Fond sombre pour les détails */
             padding: 20px;
-            border-radius: 20px;
+            border-radius: 20px; /* Angles arrondis */
             max-width: 600px;
             width: 90%;
             position: relative;
             box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
-            color: #fff;
-        }
-
-        .details-content h2 {
-            font-size: 1.8rem;
-            margin-bottom: 10px;
-        }
-
-        .details-content p {
-            font-size: 1.1rem;
-            color: #ccc;
-            margin-bottom: 20px;
-        }
-
-        .close-btn {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            font-size: 1.5rem;
-            color: #fff;
-            cursor: pointer;
+            color: #fff; /* Texte en blanc */
         }
     </style>
 </head>
 <body>
+    <!-- Bandeau de navigation -->
     <nav class="navbar">
         <ul>
             <li><a href="https://baptb.github.io/portfolio.github.io/">Accueil</a></li>
             <li>
-                <a href="#">Présentation Professionnelle</a>
+                <a href="https://baptb.github.io/portfolio.github.io/prepro.html">Présentation Professionnelle</a>
                 <ul>
-                    <li><a href="https://baptb.github.io/portfolio.github.io/etudes.html">Études</a></li>
+                    <li><a href="#">Études</a></li>
                     <li><a href="https://baptb.github.io/portfolio.github.io/competences.html">Compétences</a></li>
                     <li><a href="https://baptb.github.io/portfolio.github.io/projet.html">Projets</a></li>
                 </ul>
             </li>
             <li>
-                <a href="#">Présentation Personnelle</a>
+                <a href="https://baptb.github.io/portfolio.github.io/preperso.html">Présentation Personnelle</a>
                 <ul>
-                    <li><a href="https://baptb.github.io/portfolio.github.io/hobby.html">Hobby</a></li>
-                    <li><a href="https://baptb.github.io/portfolio.github.io/quisuisje.html">Qui suis-je ?</a></li>
+                    <li><a href="#">Hobby</a></li>
+                    <li><a href="#">Qui suis-je ?</a></li>
                 </ul>
             </li>
         </ul>
     </nav>
-
-    <div class="container">
-        <div class="skill-card" onclick="showDetails('details1')">
-            <img src="https://cdn-icons-png.flaticon.com/512/4260/4260892.png" alt="Maintenir">
-            <h3>Maintenir</h3>
-        </div>
-
-        <div class="skill-card" onclick="showDetails('details2')">
-            <img src="https://cdn-icons-png.flaticon.com/512/4260/4260895.png" alt="Vérifier">
-            <h3>Vérifier</h3>
-        </div>
-
-        <div class="skill-card" onclick="showDetails('details3')">
-            <img src="https://cdn-icons-png.flaticon.com/512/4260/4260898.png" alt="Implanter">
-            <h3>Implanter</h3>
-        </div>
-
-        <div class="skill-card" onclick="showDetails('details4')">
-            <img src="https://cdn-icons-png.flaticon.com/512/4260/4260901.png" alt="Concevoir">
-            <h3>Concevoir</h3>
-        </div>
-    </div>
-
-    <script>
-        function showDetails(detailsId) {
-            document.getElementById(detailsId).style.display = "flex";
-        }
-
-        function closeDetails(detailsId) {
-            document.getElementById(detailsId).style.display = "none";
-        }
-
-        window.onclick = function(event) {
-            if (event.target.classList.contains('details-overlay')) {
-                event.target.style.display = "none";
-            }
-        }
-    </script>
 </body>
 </html>
