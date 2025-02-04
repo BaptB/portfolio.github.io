@@ -108,26 +108,25 @@
         }
 
         .skill-card img {
-            width: 80px; /* Taille de l'icône */
+            width: 80px;
             height: 80px;
             margin-bottom: 20px;
             transition: transform 0.3s ease;
         }
 
         .skill-card h3 {
-            font-size: 1.5rem; /* Taille du titre */
+            font-size: 1.5rem;
             margin: 0;
             color: #fff;
             transition: color 0.3s ease;
         }
 
-        /* Effet de survol */
         .skill-card:hover img {
-            transform: scale(1.1); /* Zoom sur l'icône au survol */
+            transform: scale(1.1);
         }
 
         .skill-card:hover h3 {
-            color: #007BFF; /* Changement de couleur du titre au survol */
+            color: #007BFF;
         }
 
         /* Fenêtre de détails */
@@ -138,32 +137,31 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.9); /* Fond noir semi-transparent */
+            background-color: rgba(0, 0, 0, 0.9);
             justify-content: center;
             align-items: center;
             z-index: 1000;
         }
 
         .details-content {
-            background-color: #222; /* Fond sombre pour les détails */
+            background-color: #222;
             padding: 20px;
-            border-radius: 20px; /* Angles arrondis */
+            border-radius: 20px;
             max-width: 600px;
             width: 90%;
             position: relative;
             box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
-            color: #fff; /* Texte en blanc */
+            color: #fff;
         }
 
         .details-content h2 {
             font-size: 1.8rem;
             margin-bottom: 10px;
-            color: #fff;
         }
 
         .details-content p {
             font-size: 1.1rem;
-            color: #ccc; /* Texte gris clair */
+            color: #ccc;
             margin-bottom: 20px;
         }
 
@@ -178,7 +176,6 @@
     </style>
 </head>
 <body>
-    <!-- Bandeau de navigation -->
     <nav class="navbar">
         <ul>
             <li><a href="https://baptb.github.io/portfolio.github.io/">Accueil</a></li>
@@ -199,5 +196,43 @@
             </li>
         </ul>
     </nav>
+
+    <div class="container">
+        <div class="skill-card" onclick="showDetails('details1')">
+            <img src="https://cdn-icons-png.flaticon.com/512/4260/4260892.png" alt="Maintenir">
+            <h3>Maintenir</h3>
+        </div>
+
+        <div class="skill-card" onclick="showDetails('details2')">
+            <img src="https://cdn-icons-png.flaticon.com/512/4260/4260895.png" alt="Vérifier">
+            <h3>Vérifier</h3>
+        </div>
+
+        <div class="skill-card" onclick="showDetails('details3')">
+            <img src="https://cdn-icons-png.flaticon.com/512/4260/4260898.png" alt="Implanter">
+            <h3>Implanter</h3>
+        </div>
+
+        <div class="skill-card" onclick="showDetails('details4')">
+            <img src="https://cdn-icons-png.flaticon.com/512/4260/4260901.png" alt="Concevoir">
+            <h3>Concevoir</h3>
+        </div>
+    </div>
+
+    <script>
+        function showDetails(detailsId) {
+            document.getElementById(detailsId).style.display = "flex";
+        }
+
+        function closeDetails(detailsId) {
+            document.getElementById(detailsId).style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            if (event.target.classList.contains('details-overlay')) {
+                event.target.style.display = "none";
+            }
+        }
+    </script>
 </body>
 </html>
