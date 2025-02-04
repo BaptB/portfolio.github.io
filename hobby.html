@@ -1,1 +1,235 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mes Centres d'Intérêt</title>
+    <style>
+        /* Style général */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Bandeau de navigation */
+        .navbar {
+            width: 100%;
+            background-color: #222;
+            padding: 10px 20px;
+            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: center;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+            transition: background-color 0.3s ease;
+        }
+
+        .navbar:hover {
+            background-color: #111;
+        }
+
+        .navbar ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+        }
+
+        .navbar ul li {
+            position: relative;
+        }
+
+        .navbar ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.1rem;
+            padding: 10px 15px;
+            transition: color 0.3s ease;
+        }
+
+        .navbar ul li a:hover {
+            color: #007BFF;
+        }
+
+        .navbar ul li ul {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #333;
+            border-radius: 5px;
+            padding: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .navbar ul li:hover ul {
+            display: block;
+        }
+
+        .navbar ul li ul li {
+            margin: 5px 0;
+        }
+
+        .navbar ul li ul li a {
+            font-size: 1rem;
+            padding: 8px 12px;
+        }
+
+        /* Contenu principal */
+        .content {
+            max-width: 1200px;
+            width: 100%;
+            padding: 20px;
+            margin-top: 100px; /* Pour éviter que le contenu soit caché sous le bandeau */
+        }
+
+        .content h1 {
+            font-size: 2.5rem;
+            color: #fff;
+            margin-bottom: 20px;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .content p {
+            font-size: 1.1rem;
+            color: #ccc;
+            margin-bottom: 30px;
+            line-height: 1.6;
+            text-align: center;
+        }
+
+        /* Cartes des centres d'intérêt */
+        .interest-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .interest-card {
+            background-color: #222;
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            cursor: pointer;
+        }
+
+        .interest-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+        }
+
+        .interest-card h3 {
+            font-size: 1.7rem;
+            margin-bottom: 10px;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .interest-card p {
+            font-size: 1rem;
+            color: #ccc;
+            line-height: 1.5;
+        }
+
+        /* Mobile & Responsiveness */
+        @media (max-width: 768px) {
+            .content h1 {
+                font-size: 2rem;
+            }
+
+            .content p {
+                font-size: 1rem;
+            }
+
+            .interest-card h3 {
+                font-size: 1.4rem;
+            }
+
+            .interest-card p {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Bandeau de navigation -->
+    <nav class="navbar">
+        <ul>
+            <li><a href="https://baptb.github.io/portfolio.github.io/">Accueil</a></li>
+            <li>
+                <a href="https://baptb.github.io/portfolio.github.io/prepro.html">Présentation Professionnelle</a>
+                <ul>
+                    <li><a href="https://baptb.github.io/portfolio.github.io/etudes.html">Études</a></li>
+                    <li><a href="https://baptb.github.io/portfolio.github.io/competences.html">Compétences</a></li>
+                    <li><a href="https://baptb.github.io/portfolio.github.io/projet.html">Projets</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="https://baptb.github.io/portfolio.github.io/preperso.html">Présentation Personnelle</a>
+                <ul>
+                    <li><a href="https://baptb.github.io/portfolio.github.io/hobby.html">Hobby</a></li>
+                    <li><a href="#">Qui suis-je ?</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Contenu principal -->
+    <div class="content">
+        <h1>Mes Centres d'Intérêt</h1>
+        <p>Voici un aperçu de mes passions et des domaines qui me motivent au quotidien. Ces centres d'intérêt m'inspirent et m'aident à évoluer à la fois personnellement et professionnellement.</p>
+
+        <!-- Cartes des centres d'intérêt -->
+        <div class="interest-cards">
+            <!-- Carte Centre d'Intérêt 1 -->
+            <div class="interest-card">
+                <h3>Technologies et Programmation</h3>
+                <p>J'ai une passion pour les technologies et l'innovation. Je passe une grande partie de mon temps à apprendre de nouveaux langages de programmation et à développer des projets personnels.</p>
+            </div>
+
+            <!-- Carte Centre d'Intérêt 2 -->
+            <div class="interest-card">
+                <h3>Voyages</h3>
+                <p>Explorer de nouveaux endroits et découvrir différentes cultures est une de mes passions. Les voyages m'inspirent et me permettent de voir le monde sous un autre angle.</p>
+            </div>
+
+            <!-- Carte Centre d'Intérêt 3 -->
+            <div class="interest-card">
+                <h3>Musique</h3>
+                <p>La musique occupe une place importante dans ma vie. J'aime jouer d'un instrument et découvrir de nouveaux genres musicaux, ce qui me permet de me détendre et de m'évader.</p>
+            </div>
+
+            <!-- Carte Centre d'Intérêt 4 -->
+            <div class="interest-card">
+                <h3>Sport et Bien-être</h3>
+                <p>Le sport fait partie intégrante de ma routine. Je pratique régulièrement pour garder un corps sain et une bonne santé mentale, tout en repoussant mes limites.</p>
+            </div>
+
+            <!-- Carte Centre d'Intérêt 5 -->
+            <div class="interest-card">
+                <h3>Photographie</h3>
+                <p>La photographie me permet de capturer des moments précieux et de les partager avec les autres. C'est une manière créative de voir le monde et d'exprimer mes émotions.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
 
