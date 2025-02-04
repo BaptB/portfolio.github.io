@@ -1,4 +1,4 @@
-res<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
@@ -111,7 +111,15 @@ res<!DOCTYPE html>
             text-align: center;
         }
 
-        /* Rectangle pour redirection */
+        /* Conteneur des boutons */
+        .button-container {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Boutons */
         .rectangle {
             background-color: #007BFF;
             color: #fff;
@@ -123,6 +131,7 @@ res<!DOCTYPE html>
             cursor: pointer;
             transition: transform 0.3s ease, background-color 0.3s ease;
             text-decoration: none;
+            display: inline-block;
         }
 
         .rectangle:hover {
@@ -144,6 +153,11 @@ res<!DOCTYPE html>
                 padding: 15px 30px;
                 font-size: 1.1rem;
             }
+
+            .button-container {
+                flex-direction: column;
+                align-items: center;
+            }
         }
     </style>
 </head>
@@ -164,7 +178,7 @@ res<!DOCTYPE html>
                 <a href="https://baptb.github.io/portfolio.github.io/preperso.html">Présentation Personnelle</a>
                 <ul>
                     <li><a href="https://baptb.github.io/portfolio.github.io/hobby.html">Hobby</a></li>
-                    <li><a href="#">Qui suis-je ?</a></li>
+                    <li><a href="https://baptb.github.io/portfolio.github.io/qui_suis-je.html">Qui suis-je ?</a></li>
                 </ul>
             </li>
         </ul>
@@ -175,9 +189,11 @@ res<!DOCTYPE html>
         <h1>Présentation Personnelle</h1>
         <p>Je suis passionné par l'innovation, le développement et la technologie. J'aime apprendre de nouvelles choses, relever des défis et appliquer mes compétences pour créer des solutions utiles.</p>
 
-        <!-- Rectangle de redirection vers Hobby -->
-        <a href="https://baptb.github.io/portfolio.github.io/hobby.html" class="rectangle">Découvrir mes centres d'intérets</a>
+        <!-- Conteneur des boutons -->
+        <div class="button-container">
+            <a href="https://baptb.github.io/portfolio.github.io/hobby.html" class="rectangle">Découvrir mes Hobby</a>
+            <a href="https://baptb.github.io/portfolio.github.io/qui_suis-je.html" class="rectangle">Qui suis-je ?</a>
+        </div>
     </div>
 </body>
 </html>
-
