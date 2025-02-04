@@ -1,1 +1,296 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Présentation Professionnelle</title>
+    <style>
+        /* Style général */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Bandeau de navigation */
+        .navbar {
+            width: 100%;
+            background-color: #222;
+            padding: 10px 20px;
+            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: center;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+            transition: background-color 0.3s ease;
+        }
+
+        .navbar:hover {
+            background-color: #111;
+        }
+
+        .navbar ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+        }
+
+        .navbar ul li {
+            position: relative;
+        }
+
+        .navbar ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.1rem;
+            padding: 10px 15px;
+            transition: color 0.3s ease;
+        }
+
+        .navbar ul li a:hover {
+            color: #007BFF;
+        }
+
+        .navbar ul li ul {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #333;
+            border-radius: 5px;
+            padding: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .navbar ul li:hover ul {
+            display: block;
+        }
+
+        .navbar ul li ul li {
+            margin: 5px 0;
+        }
+
+        .navbar ul li ul li a {
+            font-size: 1rem;
+            padding: 8px 12px;
+        }
+
+        /* Contenu principal */
+        .content {
+            max-width: 1200px;
+            width: 100%;
+            padding: 20px;
+            margin-top: 100px; /* Pour éviter que le contenu soit caché sous le bandeau */
+        }
+
+        .content h1 {
+            font-size: 2.5rem;
+            color: #fff;
+            margin-bottom: 20px;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .content p {
+            font-size: 1.1rem;
+            color: #ccc;
+            margin-bottom: 30px;
+            line-height: 1.6;
+            text-align: center;
+        }
+
+        /* Sections */
+        .section {
+            margin-top: 40px;
+        }
+
+        .section h2 {
+            font-size: 2rem;
+            color: #fff;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+            text-align: center;
+        }
+
+        /* Cartes de compétences */
+        .skills-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .skills-card {
+            background-color: #222;
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            cursor: pointer;
+        }
+
+        .skills-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+        }
+
+        .skills-card h3 {
+            font-size: 1.7rem;
+            margin-bottom: 10px;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .skills-card p {
+            font-size: 1rem;
+            color: #ccc;
+            line-height: 1.5;
+        }
+
+        /* Expérience professionnelle */
+        .experience-list {
+            list-style-type: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+
+        .experience-item {
+            margin-bottom: 30px;
+            background-color: #222;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .experience-item h3 {
+            font-size: 1.6rem;
+            color: #fff;
+        }
+
+        .experience-item p {
+            color: #ccc;
+            font-size: 1.1rem;
+        }
+
+        .experience-item span {
+            font-weight: bold;
+            color: #007BFF;
+        }
+
+        /* Responsivité */
+        @media (max-width: 768px) {
+            .content h1 {
+                font-size: 2rem;
+            }
+
+            .content p {
+                font-size: 1rem;
+            }
+
+            .skills-card h3 {
+                font-size: 1.4rem;
+            }
+
+            .skills-card p {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Bandeau de navigation -->
+    <nav class="navbar">
+        <ul>
+            <li><a href="https://baptb.github.io/portfolio.github.io/">Accueil</a></li>
+            <li>
+                <a href="https://baptb.github.io/portfolio.github.io/prepro.html">Présentation Professionnelle</a>
+                <ul>
+                    <li><a href="https://baptb.github.io/portfolio.github.io/etudes.html">Études</a></li>
+                    <li><a href="https://baptb.github.io/portfolio.github.io/competences.html">Compétences</a></li>
+                    <li><a href="https://baptb.github.io/portfolio.github.io/projet.html">Projets</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="https://baptb.github.io/portfolio.github.io/preperso.html">Présentation Personnelle</a>
+                <ul>
+                    <li><a href="https://baptb.github.io/portfolio.github.io/hobby.html">Hobby</a></li>
+                    <li><a href="#">Qui suis-je ?</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Contenu principal -->
+    <div class="content">
+        <h1>Présentation Professionnelle</h1>
+        <p>Je suis un professionnel passionné par la technologie et l'innovation, constamment en quête de nouveaux défis pour élargir mes compétences et contribuer à des projets ambitieux.</p>
+
+        <!-- Section Études -->
+        <div class="section">
+            <h2>Mon Parcours</h2>
+            <p>Voici un aperçu de mes études et de ma formation académique qui ont façonné mon expertise.</p>
+
+            <ul class="experience-list">
+                <!-- Expérience 1 -->
+                <li class="experience-item">
+                    <h3>Université de Paris</h3>
+                    <p><span>Diplôme : </span>Master en Informatique (2022)</p>
+                    <p><span>Spécialisation : </span>Développement Logiciel et Intelligence Artificielle</p>
+                    <p>Une formation approfondie axée sur la programmation avancée et les technologies émergentes dans le domaine de l'IA.</p>
+                </li>
+
+                <!-- Expérience 2 -->
+                <li class="experience-item">
+                    <h3>Institut X</h3>
+                    <p><span>Diplôme : </span>Licence en Sciences Informatiques (2019)</p>
+                    <p><span>Spécialisation : </span>Analyse des Systèmes et Développement Web</p>
+                    <p>Formation pratique en développement web, bases de données et gestion de projets informatiques.</p>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Section Compétences -->
+        <div class="section">
+            <h2>Compétences</h2>
+            <p>Voici une sélection de mes compétences clés dans différents domaines de l'informatique et du développement.</p>
+            
+            <div class="skills-cards">
+                <!-- Carte Compétence 1 -->
+                <div class="skills-card">
+                    <h3>Développement Web</h3>
+                    <p>Maîtrise des technologies front-end (HTML, CSS, JavaScript) et back-end (Node.js, PHP). Capacité à créer des applications web dynamiques et interactives.</p>
+                </div>
+
+                <!-- Carte Compétence 2 -->
+                <div class="skills-card">
+                    <h3>Programmation</h3>
+                    <p>Expérience en développement logiciel avec des langages comme Python, Java, et C++. Expertise dans la création d'applications robustes et évolutives.</p>
+                </div>
+
+                <!-- Carte Compétence 3 -->
+                <div class="skills-card">
+                    <h3>Intelligence Artificielle</h3>
+                    <p>Connaissances en machine learning et traitement du langage naturel (NLP). Capacité à concevoir des systèmes intelligents et automatisés.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
 
