@@ -10,25 +10,31 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #000; /* Fond noir */
-            color: #fff; /* Texte en blanc */
+            background-color: #000;
+            color: #fff;
             display: flex;
             flex-direction: column;
             align-items: center;
             min-height: 100vh;
+            overflow-x: hidden;
         }
 
         /* Bandeau de navigation */
         .navbar {
             width: 100%;
-            background-color: #222; /* Fond sombre pour le bandeau */
+            background-color: #222;
             padding: 10px 20px;
             box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
             display: flex;
-            justify-content: center; /* Centrer les catégories principales */
+            justify-content: center;
             position: fixed;
             top: 0;
             z-index: 1000;
+            transition: background-color 0.3s ease;
+        }
+
+        .navbar:hover {
+            background-color: #111;
         }
 
         .navbar ul {
@@ -52,10 +58,9 @@
         }
 
         .navbar ul li a:hover {
-            color: #007BFF; /* Changement de couleur au survol */
+            color: #007BFF;
         }
 
-        /* Sous-menus */
         .navbar ul li ul {
             display: none;
             position: absolute;
@@ -80,44 +85,95 @@
             padding: 8px 12px;
         }
 
-        /* Contenu de la page */
+        /* Contenu principal */
         .content {
             max-width: 1200px;
             width: 100%;
             padding: 20px;
-            margin-top: 80px; /* Pour éviter que le contenu soit caché sous le bandeau */
+            margin-top: 100px; /* Pour éviter que le contenu soit caché sous le bandeau */
         }
 
         .content h1 {
-            font-size: 2rem;
+            font-size: 2.5rem;
             color: #fff;
             margin-bottom: 20px;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .content p {
             font-size: 1.1rem;
-            color: #ccc; /* Texte gris clair */
-            margin-bottom: 20px;
+            color: #ccc;
+            margin-bottom: 30px;
+            line-height: 1.6;
+            text-align: center;
+        }
+
+        /* Cartes des études */
+        .education-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
         }
 
         .education-card {
-            background-color: #222; /* Fond sombre pour les cartes */
-            border-radius: 20px; /* Angles arrondis */
+            background-color: #222;
+            border-radius: 20px;
             padding: 20px;
-            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1); /* Ombre claire */
-            margin-bottom: 20px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            cursor: pointer;
+        }
+
+        .education-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
         }
 
         .education-card h3 {
-            font-size: 1.5rem;
+            font-size: 1.7rem;
             margin-bottom: 10px;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .education-card p {
-            font-size: 1.1rem;
-            color: #ccc; /* Texte gris clair */
+            font-size: 1rem;
+            color: #ccc;
+            line-height: 1.5;
         }
 
+        .education-card .year {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #007BFF;
+            margin-top: 15px;
+        }
+
+        /* Mobile & Responsiveness */
+        @media (max-width: 768px) {
+            .content h1 {
+                font-size: 2rem;
+            }
+
+            .content p {
+                font-size: 1rem;
+            }
+
+            .education-card h3 {
+                font-size: 1.4rem;
+            }
+
+            .education-card p {
+                font-size: 0.9rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -146,29 +202,31 @@
     <!-- Contenu principal -->
     <div class="content">
         <h1>Mes Études</h1>
-        
-        <p>Je suis passionné par l'informatique et les nouvelles technologies. Voici un aperçu de mon parcours académique :</p>
-        
-        <!-- Carte Éducation 1 -->
-        <div class="education-card">
-            <h3>Licence en Informatique</h3>
-            <p>J'ai obtenu ma licence en informatique à l'Université XYZ, où j'ai approfondi mes connaissances en programmation, algorithmique et gestion de bases de données.</p>
-        </div>
+        <p>Voici un aperçu de mon parcours académique et des formations qui m'ont permis d'acquérir des compétences solides dans le domaine du développement et des technologies modernes.</p>
 
-        <!-- Carte Éducation 2 -->
-        <div class="education-card">
-            <h3>Master en Développement Web</h3>
-            <p>Après ma licence, j'ai poursuivi mes études avec un Master en développement web à l'Université ABC. Ce programme m'a permis d'acquérir des compétences avancées en création de sites web, technologies front-end et back-end.</p>
-        </div>
+        <!-- Cartes des études -->
+        <div class="education-cards">
+            <!-- Carte Éducation 1 -->
+            <div class="education-card">
+                <h3>Licence en Informatique</h3>
+                <p>J'ai obtenu ma licence en informatique à l'Université XYZ, où j'ai approfondi mes connaissances en programmation, algorithmique et gestion de bases de données.</p>
+                <span class="year">2016 - 2019</span>
+            </div>
 
-        <!-- Carte Éducation 3 -->
-        <div class="education-card">
-            <h3>Formation en Intelligence Artificielle</h3>
-            <p>Dans le cadre de mes études continues, j'ai suivi une formation en Intelligence Artificielle, où j'ai appris à utiliser des outils comme Python, TensorFlow et PyTorch pour développer des applications intelligentes.</p>
-        </div>
+            <!-- Carte Éducation 2 -->
+            <div class="education-card">
+                <h3>Master en Développement Web</h3>
+                <p>Après ma licence, j'ai poursuivi mes études avec un Master en développement web à l'Université ABC. Ce programme m'a permis d'acquérir des compétences avancées en création de sites web, technologies front-end et back-end.</p>
+                <span class="year">2019 - 2021</span>
+            </div>
 
-        <p>Je continue de me former à travers des cours en ligne et des projets personnels pour rester à jour avec les dernières tendances et technologies du domaine.</p>
+            <!-- Carte Éducation 3 -->
+            <div class="education-card">
+                <h3>Formation en Intelligence Artificielle</h3>
+                <p>Dans le cadre de mes études continues, j'ai suivi une formation en Intelligence Artificielle, où j'ai appris à utiliser des outils comme Python, TensorFlow et PyTorch pour développer des applications intelligentes.</p>
+                <span class="year">2022 - 2023</span>
+            </div>
+        </div>
     </div>
-
 </body>
 </html>
