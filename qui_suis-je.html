@@ -80,28 +80,43 @@
 
         .hobby {
             background-color: #222;
-            padding: 10px;
+            padding: 15px;
+            width: 200px;
             border-radius: 10px;
-            margin: 5px 0;
             cursor: pointer;
             text-align: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .hobby:hover {
+            background-color: #333;
+        }
+
+        .hobby-container {
+            width: 200px;
+            text-align: center;
+            margin-bottom: 15px;
         }
 
         .hobby-content {
-            display: none;
-            padding: 10px;
-            margin-top: 5px;
-            background-color: #333;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out;
+        }
+
+        .hobby-content img {
+            width: 100%;
             border-radius: 5px;
+            margin-top: 10px;
         }
     </style>
 </head>
 <body>
     <nav class="navbar">
         <ul>
-            <li><a href="https://baptb.github.io/portfolio.github.io/">Accueil</a></li>
-            <li><a href="https://baptb.github.io/portfolio.github.io/prepro.html">Présentation Professionnelle</a></li>
-            <li><a href="https://baptb.github.io/portfolio.github.io/preperso.html">Présentation Personnelle</a></li>
+            <li><a href="#">Accueil</a></li>
+            <li><a href="#">Présentation Professionnelle</a></li>
+            <li><a href="#">Présentation Personnelle</a></li>
         </ul>
     </nav>
 
@@ -115,24 +130,40 @@
         </p>
         <div class="hobbies">
             <h2>Mes hobbies</h2>
-            <div class="hobby" onclick="toggleContent('sport')">Sport</div>
-            <div id="sport" class="hobby-content">J'adore pratiquer différents sports, notamment la course, le football et la musculation.</div>
-
-            <div class="hobby" onclick="toggleContent('jeux-video')">Jeux vidéo</div>
-            <div id="jeux-video" class="hobby-content">Les jeux vidéo sont une passion depuis mon enfance, avec une préférence pour les jeux de stratégie et les RPG.</div>
-
-            <div class="hobby" onclick="toggleContent('science-fiction')">Musique</div>
-            <div id="science-fiction" class="hobby-content">Je pratique de la guitare, j'aime la musique</div>
+            
+            <div class="hobby-container">
+                <div class="hobby" onclick="toggleContent('sport')">Sport</div>
+                <div id="sport" class="hobby-content">
+                    <p>J'adore pratiquer différents sports, notamment la course, le football et la musculation.</p>
+                    <img src="https://via.placeholder.com/200x100" alt="Sport">
+                </div>
+            </div>
+            
+            <div class="hobby-container">
+                <div class="hobby" onclick="toggleContent('jeux-video')">Jeux vidéo</div>
+                <div id="jeux-video" class="hobby-content">
+                    <p>Les jeux vidéo sont une passion depuis mon enfance, avec une préférence pour les jeux de stratégie et les RPG.</p>
+                    <img src="https://via.placeholder.com/200x100" alt="Jeux vidéo">
+                </div>
+            </div>
+            
+            <div class="hobby-container">
+                <div class="hobby" onclick="toggleContent('science-fiction')">Science-fiction</div>
+                <div id="science-fiction" class="hobby-content">
+                    <p>La science-fiction me passionne, que ce soit à travers les films, les séries ou les livres.</p>
+                    <img src="https://via.placeholder.com/200x100" alt="Science-fiction">
+                </div>
+            </div>
         </div>
     </div>
 
     <script>
         function toggleContent(id) {
             var content = document.getElementById(id);
-            if (content.style.display === "block") {
-                content.style.display = "none";
+            if (content.style.maxHeight === "0px" || content.style.maxHeight === "") {
+                content.style.maxHeight = content.scrollHeight + "px";
             } else {
-                content.style.display = "block";
+                content.style.maxHeight = "0px";
             }
         }
     </script>
