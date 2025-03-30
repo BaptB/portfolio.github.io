@@ -78,22 +78,21 @@
             margin-top: 30px;
         }
 
-        .hobbies h2 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-        }
-
-        .hobbies ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .hobbies ul li {
-            font-size: 1.1rem;
+        .hobby {
             background-color: #222;
             padding: 10px;
             border-radius: 10px;
             margin: 5px 0;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .hobby-content {
+            display: none;
+            padding: 10px;
+            margin-top: 5px;
+            background-color: #333;
+            border-radius: 5px;
         }
     </style>
 </head>
@@ -116,12 +115,26 @@
         </p>
         <div class="hobbies">
             <h2>Mes hobbies</h2>
-            <ul>
-                <li>Sport</li>
-                <li>Jeux vidéo</li>
-                <li>Science-fiction</li>
-            </ul>
+            <div class="hobby" onclick="toggleContent('sport')">Sport</div>
+            <div id="sport" class="hobby-content">J'adore pratiquer différents sports, notamment la course, le football et la musculation.</div>
+
+            <div class="hobby" onclick="toggleContent('jeux-video')">Jeux vidéo</div>
+            <div id="jeux-video" class="hobby-content">Les jeux vidéo sont une passion depuis mon enfance, avec une préférence pour les jeux de stratégie et les RPG.</div>
+
+            <div class="hobby" onclick="toggleContent('science-fiction')">Musique</div>
+            <div id="science-fiction" class="hobby-content">Je pratique de la guitare, j'aime la musique</div>
         </div>
     </div>
+
+    <script>
+        function toggleContent(id) {
+            var content = document.getElementById(id);
+            if (content.style.display === "block") {
+                content.style.display = "none";
+            } else {
+                content.style.display = "block";
+            }
+        }
+    </script>
 </body>
 </html>
