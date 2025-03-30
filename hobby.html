@@ -90,7 +90,7 @@
             max-width: 1200px;
             width: 100%;
             padding: 20px;
-            margin-top: 100px; /* Pour éviter que le contenu soit caché sous le bandeau */
+            margin-top: 100px;
         }
 
         .content h1 {
@@ -167,6 +167,51 @@
                 font-size: 0.9rem;
             }
         }
+
+        /* Fenêtre flottante de détail */
+        .details-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .details-content {
+            background-color: #222;
+            padding: 20px;
+            border-radius: 20px;
+            max-width: 600px;
+            width: 90%;
+            position: relative;
+            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+
+        .details-content h2 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        .details-content p {
+            font-size: 1.1rem;
+            color: #ccc;
+            margin-bottom: 20px;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 1.5rem;
+            color: #fff;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -199,35 +244,95 @@
         <!-- Cartes des centres d'intérêt -->
         <div class="interest-cards">
             <!-- Carte Centre d'Intérêt 1 -->
-            <div class="interest-card">
+            <div class="interest-card" onclick="showDetails('details1')">
                 <h3>Technologies et Programmation</h3>
                 <p>J'ai une passion pour les technologies et l'innovation. Je passe une grande partie de mon temps à apprendre de nouveaux langages de programmation et à développer des projets personnels.</p>
             </div>
 
             <!-- Carte Centre d'Intérêt 2 -->
-            <div class="interest-card">
+            <div class="interest-card" onclick="showDetails('details2')">
                 <h3>Voyages</h3>
                 <p>Explorer de nouveaux endroits et découvrir différentes cultures est une de mes passions. Les voyages m'inspirent et me permettent de voir le monde sous un autre angle.</p>
             </div>
 
             <!-- Carte Centre d'Intérêt 3 -->
-            <div class="interest-card">
+            <div class="interest-card" onclick="showDetails('details3')">
                 <h3>Musique</h3>
                 <p>La musique occupe une place importante dans ma vie. J'aime jouer d'un instrument et découvrir de nouveaux genres musicaux, ce qui me permet de me détendre et de m'évader.</p>
             </div>
 
             <!-- Carte Centre d'Intérêt 4 -->
-            <div class="interest-card">
+            <div class="interest-card" onclick="showDetails('details4')">
                 <h3>Sport et Bien-être</h3>
                 <p>Le sport fait partie intégrante de ma routine. Je pratique régulièrement pour garder un corps sain et une bonne santé mentale, tout en repoussant mes limites.</p>
             </div>
 
             <!-- Carte Centre d'Intérêt 5 -->
-            <div class="interest-card">
+            <div class="interest-card" onclick="showDetails('details5')">
                 <h3>Photographie</h3>
                 <p>La photographie me permet de capturer des moments précieux et de les partager avec les autres. C'est une manière créative de voir le monde et d'exprimer mes émotions.</p>
             </div>
         </div>
     </div>
+
+    <!-- Fenêtres de détails -->
+    <div id="details1" class="details-overlay">
+        <div class="details-content">
+            <span class="close-btn" onclick="closeDetails('details1')">&times;</span>
+            <h2>Technologies et Programmation</h2>
+            <p>J'ai une passion pour les technologies et l'innovation. Je passe une grande partie de mon temps à apprendre de nouveaux langages de programmation et à développer des projets personnels.</p>
+        </div>
+    </div>
+
+    <div id="details2" class="details-overlay">
+        <div class="details-content">
+            <span class="close-btn" onclick="closeDetails('details2')">&times;</span>
+            <h2>Voyages</h2>
+            <p>Explorer de nouveaux endroits et découvrir différentes cultures est une de mes passions. Les voyages m'inspirent et me permettent de voir le monde sous un autre angle.</p>
+        </div>
+    </div>
+
+    <div id="details3" class="details-overlay">
+        <div class="details-content">
+            <span class="close-btn" onclick="closeDetails('details3')">&times;</span>
+            <h2>Musique</h2>
+            <p>La musique occupe une place importante dans ma vie. J'aime jouer d'un instrument et découvrir de nouveaux genres musicaux, ce qui me permet de me détendre et de m'évader.</p>
+        </div>
+    </div>
+
+    <div id="details4" class="details-overlay">
+        <div class="details-content">
+            <span class="close-btn" onclick="closeDetails('details4')">&times;</span>
+            <h2>Sport et Bien-être</h2>
+            <p>Le sport fait partie intégrante de ma routine. Je pratique régulièrement pour garder un corps sain et une bonne santé mentale, tout en repoussant mes limites.</p>
+        </div>
+    </div>
+
+    <div id="details5" class="details-overlay">
+        <div class="details-content">
+            <span class="close-btn" onclick="closeDetails('details5')">&times;</span>
+            <h2>Photographie</h2>
+            <p>La photographie me permet de capturer des moments précieux et de les partager avec les autres. C'est une manière créative de voir le monde et d'exprimer mes émotions.</p>
+        </div>
+    </div>
+
+    <script>
+        // Fonction pour afficher les détails
+        function showDetails(detailsId) {
+            document.getElementById(detailsId).style.display = "flex";
+        }
+
+        // Fonction pour fermer les détails
+        function closeDetails(detailsId) {
+            document.getElementById(detailsId).style.display = "none";
+        }
+
+        // Fermer la fenêtre de détails si on clique en dehors
+        window.onclick = function(event) {
+            if (event.target.classList.contains('details-overlay')) {
+                event.target.style.display = "none";
+            }
+        }
+    </script>
 </body>
 </html>
