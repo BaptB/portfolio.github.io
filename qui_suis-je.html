@@ -1,1 +1,129 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Présentation Personnelle</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .navbar {
+            width: 100%;
+            background-color: #222;
+            padding: 10px 20px;
+            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: center;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+        }
+
+        .navbar ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.1rem;
+            padding: 10px 15px;
+            transition: color 0.3s ease;
+        }
+
+        .navbar ul li a:hover {
+            color: #007BFF;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            max-width: 800px;
+            margin-top: 80px;
+        }
+
+        .profile-picture {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .bio {
+            font-size: 1.2rem;
+            color: #ccc;
+            line-height: 1.6;
+        }
+
+        .hobbies {
+            margin-top: 30px;
+        }
+
+        .hobbies h2 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .hobbies ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .hobbies ul li {
+            font-size: 1.1rem;
+            background-color: #222;
+            padding: 10px;
+            border-radius: 10px;
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <ul>
+            <li><a href="https://baptb.github.io/portfolio.github.io/">Accueil</a></li>
+            <li><a href="https://baptb.github.io/portfolio.github.io/prepro.html">Présentation Professionnelle</a></li>
+            <li><a href="https://baptb.github.io/portfolio.github.io/preperso.html">Présentation Personnelle</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <img src="https://via.placeholder.com/200" alt="Photo de profil" class="profile-picture">
+        <h1>Bienvenue sur ma présentation personnelle</h1>
+        <p class="bio">
+            Passionné par la technologie et le développement, j'aime explorer de nouvelles technologies
+            et relever des défis techniques. Dans mon temps libre, je m'intéresse également à la photographie,
+            aux voyages et aux jeux vidéo.
+        </p>
+        <div class="hobbies">
+            <h2>Mes hobbies</h2>
+            <ul>
+                <li>Photographie</li>
+                <li>Voyages</li>
+                <li>Jeux vidéo</li>
+                <li>Lecture de science-fiction</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
 
