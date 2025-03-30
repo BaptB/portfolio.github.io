@@ -86,6 +86,7 @@
             cursor: pointer;
             text-align: center;
             transition: background-color 0.3s ease;
+            margin: 10px;
         }
 
         .hobby:hover {
@@ -96,14 +97,22 @@
             width: 200px;
             text-align: center;
             margin-bottom: 15px;
+            position: relative;
+            overflow: visible; /* Permet au contenu de dépasser */
         }
 
         .hobby-content {
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.5s ease-out;
-            width: auto; /* Permet au texte de dépasser la largeur */
-            white-space: normal; /* Permet au texte de s'afficher sur plusieurs lignes */
+            width: 100%; /* La largeur suit le conteneur */
+            white-space: normal;
+            margin-top: 10px;
+            position: relative;
+        }
+
+        .hobby-content p {
+            word-wrap: break-word; /* Permet de gérer les longs mots sans casser la mise en page */
         }
 
         .hobby-content img {
@@ -136,7 +145,7 @@
             <div class="hobby-container">
                 <div class="hobby" onclick="toggleContent('sport')">Sport</div>
                 <div id="sport" class="hobby-content">
-                    <p>J'adore pratiquer différents sports, notamment la course, le football et la musculation.</p>
+                    <p>J'adore pratiquer différents sports, notamment la course, le football et la musculation. Cela m'aide à rester en forme et à me dépasser constamment.</p>
                     <img src="https://via.placeholder.com/200x100" alt="Sport">
                 </div>
             </div>
@@ -144,7 +153,7 @@
             <div class="hobby-container">
                 <div class="hobby" onclick="toggleContent('jeux-video')">Jeux vidéo</div>
                 <div id="jeux-video" class="hobby-content">
-                    <p>Les jeux vidéo sont une passion depuis mon enfance, avec une préférence pour les jeux de stratégie et les RPG.</p>
+                    <p>Les jeux vidéo sont une passion depuis mon enfance, en particulier les jeux de stratégie et les RPG. Ils me permettent de m'évader et de relever des défis intellectuels.</p>
                     <img src="https://via.placeholder.com/200x100" alt="Jeux vidéo">
                 </div>
             </div>
@@ -152,7 +161,7 @@
             <div class="hobby-container">
                 <div class="hobby" onclick="toggleContent('science-fiction')">Science-fiction</div>
                 <div id="science-fiction" class="hobby-content">
-                    <p>La science-fiction me passionne, que ce soit à travers les films, les séries ou les livres.</p>
+                    <p>La science-fiction m'inspire beaucoup, que ce soit à travers des films, des séries ou des livres. J'aime imaginer les avancées technologiques et les sociétés futures.</p>
                     <img src="https://via.placeholder.com/200x100" alt="Science-fiction">
                 </div>
             </div>
