@@ -1,216 +1,76 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Projets</title>
-  <style>
-    body {
-      margin: 0;
-      background: black;
-      font-family: sans-serif;
-    }
-
-    .container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 20px;
-      padding: 40px;
-    }
-
-    .box {
-      position: relative;
-      overflow: hidden;
-      border-radius: 20px;
-      aspect-ratio: 1 / 1;
-      box-shadow: 0 0 10px white;
-      cursor: pointer;
-    }
-
-    .box img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.3s;
-    }
-
-    .box:hover img {
-      transform: scale(1.05);
-    }
-
-    .overlay {
-      position: absolute;
-      bottom: 0;
-      background: rgba(0, 0, 0, 0.7);
-      width: 100%;
-      padding: 10px;
-      text-align: center;
-      color: white;
-      font-size: 1.2em;
-    }
-
-    .modal, .popup {
-      display: none;
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0, 0, 0, 0.9);
-      justify-content: center;
-      align-items: center;
-      z-index: 1000;
-    }
-
-    .modal-content, .popup-content {
-      background: #222;
-      color: white;
-      padding: 20px;
-      border-radius: 20px;
-      max-width: 700px;
-      width: 90%;
-      position: relative;
-    }
-
-    .close {
-      position: absolute;
-      top: 10px; right: 15px;
-      font-size: 24px;
-      cursor: pointer;
-      color: white;
-    }
-
-    .gallery {
-      display: flex;
-      gap: 10px;
-      margin: 15px 0;
-      flex-wrap: wrap;
-    }
-
-    .gallery img {
-      width: 100px;
-      height: 100px;
-      object-fit: cover;
-      border-radius: 10px;
-    }
-
-    .buttons {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-top: 10px;
-    }
-
-    .buttons button {
-      padding: 10px 15px;
-      border: none;
-      border-radius: 10px;
-      background-color: #007BFF;
-      color: white;
-      cursor: pointer;
-    }
-
-    .popup-content iframe {
-      width: 100%;
-      height: 400px;
-      border: none;
-    }
-  </style>
-</head>
-<body>
-
-  <div class="container">
-    <div class="box" onclick="openModal('modal1')">
-      <img src="Optiplant.jpg" alt="Optiplant">
-      <div class="overlay">Optiplant</div>
+<!-- Fenêtre de détails pour Projet 1 -->
+<div id="details1" class="details-overlay">
+    <div class="details-content">
+        <span class="close-btn" onclick="closeDetails('details1')">&times;</span>
+        <h2>Optiplant</h2>
+        <p><strong>Technologies :</strong> HTML, CSS, PHP, SQL</p>
+        <p><strong>Description :</strong> Site internet relié à une base de données MySQL permettant de visualiser les informations d’une ombrière intelligente (température, humidité, luminosité). Le site permet de consulter les données et de piloter l’arrosage.</p>
+        <p><strong>Objectif :</strong> Optimiser la croissance des plantes en environnement contrôlé.</p>
     </div>
+</div>
 
-    <div class="box" onclick="openModal('modal2')">
-      <img src="vivreenmusique.jpg" alt="Vivre en musique">
-      <div class="overlay">Vivre en musique</div>
+<!-- Fenêtre de détails pour Projet 2 -->
+<div id="details2" class="details-overlay">
+    <div class="details-content">
+        <span class="close-btn" onclick="closeDetails('details2')">&times;</span>
+        <h2>Transmetteur longue distance</h2>
+        <p><strong>Technologies :</strong> Module RF 433 MHz, Arduino</p>
+        <p><strong>Description :</strong> Système de transmission de données à longue distance via des ondes radio. Permet l’envoi d’informations simples comme la température ou un signal d’alerte entre deux points éloignés.</p>
+        <p><strong>Objectif :</strong> Établir une communication fiable sans passer par Internet ou Bluetooth.</p>
     </div>
+</div>
 
-    <div class="box" onclick="openModal('modal3')">
-      <img src="jeuxvideo.jpg" alt="Jeux Vidéo">
-      <div class="overlay">Jeux Vidéo</div>
+<!-- Fenêtre de détails pour Projet 3 -->
+<div id="details3" class="details-overlay">
+    <div class="details-content">
+        <span class="close-btn" onclick="closeDetails('details3')">&times;</span>
+        <h2>Déambulateur intelligent</h2>
+        <p><strong>Technologies :</strong> Arduino, capteurs ultrason, capteurs IR</p>
+        <p><strong>Description :</strong> Conception d’un déambulateur équipé de capteurs pour détecter les obstacles et prévenir l’utilisateur en temps réel via un retour sonore ou lumineux.</p>
+        <p><strong>Objectif :</strong> Améliorer la sécurité et l’autonomie des personnes âgées.</p>
     </div>
+</div>
 
-    <div class="box" onclick="openModal('modal4')">
-      <img src="Boxe.jpg" alt="Boxe">
-      <div class="overlay">Boxe</div>
+<!-- Fenêtre de détails pour Projet 4 -->
+<div id="details4" class="details-overlay">
+    <div class="details-content">
+        <span class="close-btn" onclick="closeDetails('details4')">&times;</span>
+        <h2>Nanopi Neo2</h2>
+        <p><strong>Technologies :</strong> Nanopi Neo2, Linux, SSH</p>
+        <p><strong>Description :</strong> Mise en place d’un mini-serveur avec un Nanopi Neo2. Configuration réseau, mise en place d’un serveur web léger et utilisation à distance via SSH.</p>
+        <p><strong>Objectif :</strong> Expérimenter avec les micro-ordinateurs à bas coût pour héberger des services personnels.</p>
     </div>
+</div>
 
-    <div class="box" onclick="openModal('modal5')">
-      <img src="Maison.jpg" alt="Maison connectée">
-      <div class="overlay">Maison connectée</div>
+<!-- Fenêtre de détails pour Projet 5 -->
+<div id="details5" class="details-overlay">
+    <div class="details-content">
+        <span class="close-btn" onclick="closeDetails('details5')">&times;</span>
+        <h2>Robot Autonome</h2>
+        <p><strong>Technologies :</strong> Arduino, moteurs DC, capteurs infrarouges</p>
+        <p><strong>Description :</strong> Robot mobile capable de suivre une ligne noire au sol de façon autonome. Programmation du comportement de suivi et détection des obstacles.</p>
+        <p><strong>Projet :</strong> Réalisé en 2ème année GIES</p>
     </div>
+</div>
 
-    <div class="box" onclick="openModal('modal6')">
-      <img src="securiteinformatique.jpg" alt="Sécurité informatique">
-      <div class="overlay">Sécurité informatique</div>
+<!-- Fenêtre de détails pour Projet 6 -->
+<div id="details6" class="details-overlay">
+    <div class="details-content">
+        <span class="close-btn" onclick="closeDetails('details6')">&times;</span>
+        <h2>Carte domotique</h2>
+        <p><strong>Technologies :</strong> ESP32, MQTT, Node-RED</p>
+        <p><strong>Description :</strong> Développement d’une carte domotique connectée permettant de contrôler des lumières, capteurs de mouvement, et température via Wi-Fi et interface web.</p>
+        <p><strong>Projet :</strong> Réalisé en 2ème année, projet GIBERT</p>
     </div>
+</div>
 
-    <div class="box" onclick="openModal('modal7')">
-      <img src="morpion.jpg" alt="Morpion">
-      <div class="overlay">Morpion</div>
+<!-- Fenêtre de détails pour Projet 7 -->
+<div id="details7" class="details-overlay">
+    <div class="details-content">
+        <span class="close-btn" onclick="closeDetails('details7')">&times;</span>
+        <h2>Projet 7 : Portfolio</h2>
+        <p><strong>Technologies :</strong> HTML, CSS, JavaScript</p>
+        <p><strong>Description :</strong> Création d’un site web personnel pour présenter mes projets, compétences et parcours. Responsive, clair et accessible depuis n’importe quel appareil.</p>
+        <p><strong>Objectif :</strong> Valoriser mes expériences professionnelles et académiques.</p>
     </div>
-  </div>
-
-  <!-- Exemple de modal : Optiplant -->
-  <div id="modal1" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeModal('modal1')">&times;</span>
-      <h2>Optiplant</h2>
-      <p>Site internet pour suivre les données d'une ombrière connectée à des plantes.</p>
-      <div class="gallery">
-        <img src="Optiplant.jpg" alt="">
-        <img src="Optiplant2.jpg" alt="">
-      </div>
-      <div class="buttons">
-        <button onclick="openPopup('popup1video')">Voir vidéo</button>
-        <button onclick="openPopup('popup1doc')">Documentation</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Popups supplémentaires pour Optiplant -->
-  <div id="popup1video" class="popup">
-    <div class="popup-content">
-      <span class="close" onclick="closePopup('popup1video')">&times;</span>
-      <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
-    </div>
-  </div>
-
-  <div id="popup1doc" class="popup">
-    <div class="popup-content">
-      <span class="close" onclick="closePopup('popup1doc')">&times;</span>
-      <p>Documentation du projet Optiplant à venir ici.</p>
-    </div>
-  </div>
-
-  <!-- Ajoute les autres modales ici si tu veux -->
-
-  <script>
-    function openModal(id) {
-      document.getElementById(id).style.display = "flex";
-    }
-
-    function closeModal(id) {
-      document.getElementById(id).style.display = "none";
-    }
-
-    function openPopup(id) {
-      document.getElementById(id).style.display = "flex";
-    }
-
-    function closePopup(id) {
-      document.getElementById(id).style.display = "none";
-    }
-
-    window.onclick = function(e) {
-      if (e.target.classList.contains('modal') || e.target.classList.contains('popup')) {
-        e.target.style.display = "none";
-      }
-    };
-  </script>
-
-</body>
-</html>
+</div>
