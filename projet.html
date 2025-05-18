@@ -1,295 +1,216 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mes Projets</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #000;
-            color: #fff;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Projets</title>
+  <style>
+    body {
+      margin: 0;
+      background: black;
+      font-family: sans-serif;
+    }
 
-        .navbar {
-            width: 100%;
-            background-color: #222;
-            padding: 10px 20px;
-            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
-            display: flex;
-            justify-content: center;
-            position: fixed;
-            top: 0;
-            z-index: 1000;
-        }
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      padding: 40px;
+    }
 
-        .navbar ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            gap: 20px;
-        }
+    .box {
+      position: relative;
+      overflow: hidden;
+      border-radius: 20px;
+      aspect-ratio: 1 / 1;
+      box-shadow: 0 0 10px white;
+      cursor: pointer;
+    }
 
-        .navbar ul li {
-            position: relative;
-        }
+    .box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s;
+    }
 
-        .navbar ul li a {
-            color: #fff;
-            text-decoration: none;
-            font-size: 1.1rem;
-            padding: 10px 15px;
-            transition: color 0.3s ease;
-        }
+    .box:hover img {
+      transform: scale(1.05);
+    }
 
-        .navbar ul li a:hover {
-            color: #007BFF;
-        }
+    .overlay {
+      position: absolute;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.7);
+      width: 100%;
+      padding: 10px;
+      text-align: center;
+      color: white;
+      font-size: 1.2em;
+    }
 
-        .navbar ul li ul {
-            display: none;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            background-color: #333;
-            border-radius: 5px;
-            padding: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
+    .modal, .popup {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
 
-        .navbar ul li:hover ul {
-            display: block;
-        }
+    .modal-content, .popup-content {
+      background: #222;
+      color: white;
+      padding: 20px;
+      border-radius: 20px;
+      max-width: 700px;
+      width: 90%;
+      position: relative;
+    }
 
-        .container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            padding: 20px;
-            max-width: 1200px;
-            width: 100%;
-            margin-top: 80px;
-        }
+    .close {
+      position: absolute;
+      top: 10px; right: 15px;
+      font-size: 24px;
+      cursor: pointer;
+      color: white;
+    }
 
-        .project-card {
-            position: relative;
-            overflow: hidden;
-            border-radius: 20px;
-            background-color: #222;
-            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
-            transition: transform 0.3s ease;
-            cursor: pointer;
-            aspect-ratio: 1 / 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+    .gallery {
+      display: flex;
+      gap: 10px;
+      margin: 15px 0;
+      flex-wrap: wrap;
+    }
 
-        .project-card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 20px;
-            transition: transform 0.3s ease;
-        }
+    .gallery img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
 
-        .project-card h3 {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            margin: 0;
-            padding: 15px;
-            background-color: rgba(0, 0, 0, 0.7);
-            text-align: center;
-            font-size: 1.5rem;
-        }
+    .buttons {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
 
-        .project-card:hover img {
-            transform: scale(1.1);
-        }
+    .buttons button {
+      padding: 10px 15px;
+      border: none;
+      border-radius: 10px;
+      background-color: #007BFF;
+      color: white;
+      cursor: pointer;
+    }
 
-        .details-overlay, .popup-overlay {
-            display: none;
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-            justify-content: center;
-            align-items: center;
-            z-index: 2000;
-        }
-
-        .details-content, .popup-content {
-            background-color: #222;
-            padding: 20px;
-            border-radius: 20px;
-            max-width: 700px;
-            width: 90%;
-            position: relative;
-            color: white;
-            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
-        }
-
-        .details-content h2 {
-            margin-top: 0;
-        }
-
-        .close-btn {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: white;
-        }
-
-        .image-gallery {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-            margin: 15px 0;
-        }
-
-        .image-gallery img {
-            width: 100px;
-            height: 100px;
-            object-fit: cover;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-
-        .image-gallery img:hover {
-            transform: scale(1.1);
-        }
-
-        .buttons-group {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .buttons-group button {
-            padding: 10px 15px;
-            border: none;
-            border-radius: 10px;
-            background-color: #007BFF;
-            color: white;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        .buttons-group button:hover {
-            background-color: #0056b3;
-        }
-
-        .popup-content iframe {
-            width: 100%;
-            height: 400px;
-            border: none;
-        }
-    </style>
+    .popup-content iframe {
+      width: 100%;
+      height: 400px;
+      border: none;
+    }
+  </style>
 </head>
 <body>
 
-    <!-- Navbar -->
-    <nav class="navbar">
-        <ul>
-            <li><a href="#">Accueil</a></li>
-            <li>
-                <a href="#">Présentation Professionnelle</a>
-                <ul>
-                    <li><a href="#">Études</a></li>
-                    <li><a href="#">Compétences</a></li>
-                    <li><a href="#">Projets</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="#">Présentation Personnelle</a>
-                <ul>
-                    <li><a href="#">Hobby</a></li>
-                </ul>
-            </li>
-        </ul>
-    </nav>
-
-    <!-- Cartes projets -->
-    <div class="container">
-        <div class="project-card" onclick="showDetails('details1')">
-            <img src="Optiplant.jpg" alt="Optiplant" />
-            <h3>Optiplant</h3>
-        </div>
+  <div class="container">
+    <div class="box" onclick="openModal('modal1')">
+      <img src="Optiplant.jpg" alt="Optiplant">
+      <div class="overlay">Optiplant</div>
     </div>
 
-    <!-- Détails projet 1 -->
-    <div id="details1" class="details-overlay">
-        <div class="details-content">
-            <span class="close-btn" onclick="closeDetails('details1')">&times;</span>
-            <h2>Optiplant</h2>
-            <p>Site internet pour suivre les données d'une ombrière assurant la croissance des plantes.</p>
-
-            <!-- Galerie -->
-            <div class="image-gallery">
-                <img src="Optiplant.jpg" alt="Optiplant 1" />
-                <img src="Optiplant2.jpg" alt="Optiplant 2" />
-            </div>
-
-            <!-- Boutons -->
-            <div class="buttons-group">
-                <button onclick="showPopup('popupVideo')">Voir la vidéo</button>
-                <button onclick="showPopup('popupDoc')">Documentation</button>
-            </div>
-        </div>
+    <div class="box" onclick="openModal('modal2')">
+      <img src="vivreenmusique.jpg" alt="Vivre en musique">
+      <div class="overlay">Vivre en musique</div>
     </div>
 
-    <!-- Popup vidéo -->
-    <div id="popupVideo" class="popup-overlay">
-        <div class="popup-content">
-            <span class="close-btn" onclick="closePopup('popupVideo')">&times;</span>
-            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
-        </div>
+    <div class="box" onclick="openModal('modal3')">
+      <img src="jeuxvideo.jpg" alt="Jeux Vidéo">
+      <div class="overlay">Jeux Vidéo</div>
     </div>
 
-    <!-- Popup documentation -->
-    <div id="popupDoc" class="popup-overlay">
-        <div class="popup-content">
-            <span class="close-btn" onclick="closePopup('popupDoc')">&times;</span>
-            <p>Ici, vous trouverez la documentation complète du projet Optiplant (PDF, texte, ou liens).</p>
-        </div>
+    <div class="box" onclick="openModal('modal4')">
+      <img src="Boxe.jpg" alt="Boxe">
+      <div class="overlay">Boxe</div>
     </div>
 
-    <!-- JavaScript -->
-    <script>
-        function showDetails(id) {
-            document.getElementById(id).style.display = "flex";
-        }
+    <div class="box" onclick="openModal('modal5')">
+      <img src="Maison.jpg" alt="Maison connectée">
+      <div class="overlay">Maison connectée</div>
+    </div>
 
-        function closeDetails(id) {
-            document.getElementById(id).style.display = "none";
-        }
+    <div class="box" onclick="openModal('modal6')">
+      <img src="securiteinformatique.jpg" alt="Sécurité informatique">
+      <div class="overlay">Sécurité informatique</div>
+    </div>
 
-        function showPopup(id) {
-            document.getElementById(id).style.display = "flex";
-        }
+    <div class="box" onclick="openModal('modal7')">
+      <img src="morpion.jpg" alt="Morpion">
+      <div class="overlay">Morpion</div>
+    </div>
+  </div>
 
-        function closePopup(id) {
-            document.getElementById(id).style.display = "none";
-        }
+  <!-- Exemple de modal : Optiplant -->
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('modal1')">&times;</span>
+      <h2>Optiplant</h2>
+      <p>Site internet pour suivre les données d'une ombrière connectée à des plantes.</p>
+      <div class="gallery">
+        <img src="Optiplant.jpg" alt="">
+        <img src="Optiplant2.jpg" alt="">
+      </div>
+      <div class="buttons">
+        <button onclick="openPopup('popup1video')">Voir vidéo</button>
+        <button onclick="openPopup('popup1doc')">Documentation</button>
+      </div>
+    </div>
+  </div>
 
-        window.onclick = function(event) {
-            if (event.target.classList.contains('details-overlay') || event.target.classList.contains('popup-overlay')) {
-                event.target.style.display = "none";
-            }
-        };
-    </script>
+  <!-- Popups supplémentaires pour Optiplant -->
+  <div id="popup1video" class="popup">
+    <div class="popup-content">
+      <span class="close" onclick="closePopup('popup1video')">&times;</span>
+      <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <div id="popup1doc" class="popup">
+    <div class="popup-content">
+      <span class="close" onclick="closePopup('popup1doc')">&times;</span>
+      <p>Documentation du projet Optiplant à venir ici.</p>
+    </div>
+  </div>
+
+  <!-- Ajoute les autres modales ici si tu veux -->
+
+  <script>
+    function openModal(id) {
+      document.getElementById(id).style.display = "flex";
+    }
+
+    function closeModal(id) {
+      document.getElementById(id).style.display = "none";
+    }
+
+    function openPopup(id) {
+      document.getElementById(id).style.display = "flex";
+    }
+
+    function closePopup(id) {
+      document.getElementById(id).style.display = "none";
+    }
+
+    window.onclick = function(e) {
+      if (e.target.classList.contains('modal') || e.target.classList.contains('popup')) {
+        e.target.style.display = "none";
+      }
+    };
+  </script>
+
 </body>
 </html>
