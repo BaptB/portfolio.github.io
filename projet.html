@@ -1,31 +1,29 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mes Projets</title>
     <style>
-        /* Style général */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #000; /* Fond noir */
-            color: #fff; /* Texte en blanc */
+            background-color: #000;
+            color: #fff;
             display: flex;
             flex-direction: column;
             align-items: center;
             min-height: 100vh;
         }
 
-        /* Bandeau de navigation */
         .navbar {
             width: 100%;
-            background-color: #222; /* Fond sombre pour le bandeau */
+            background-color: #222;
             padding: 10px 20px;
             box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
             display: flex;
-            justify-content: center; /* Centrer les catégories principales */
+            justify-content: center;
             position: fixed;
             top: 0;
             z-index: 1000;
@@ -52,10 +50,9 @@
         }
 
         .navbar ul li a:hover {
-            color: #007BFF; /* Changement de couleur au survol */
+            color: #007BFF;
         }
 
-        /* Sous-menus */
         .navbar ul li ul {
             display: none;
             position: absolute;
@@ -71,36 +68,26 @@
             display: block;
         }
 
-        .navbar ul li ul li {
-            margin: 5px 0;
-        }
-
-        .navbar ul li ul li a {
-            font-size: 1rem;
-            padding: 8px 12px;
-        }
-
         .container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Grille responsive */
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 20px;
             padding: 20px;
             max-width: 1200px;
             width: 100%;
-            margin-top: 80px; /* Pour éviter que le contenu soit caché sous le bandeau */
+            margin-top: 80px;
         }
 
         .project-card {
             position: relative;
             overflow: hidden;
-            border-radius: 20px; /* Angles arrondis */
-            background-color: #222; /* Fond sombre pour les cartes */
-            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1); /* Ombre claire */
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-radius: 20px;
+            background-color: #222;
+            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease;
             cursor: pointer;
-            aspect-ratio: 1 / 1; /* Carrés parfaits */
+            aspect-ratio: 1 / 1;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
         }
@@ -108,8 +95,8 @@
         .project-card img {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Ajuste l'image pour couvrir la zone */
-            border-radius: 20px; /* Angles arrondis */
+            object-fit: cover;
+            border-radius: 20px;
             transition: transform 0.3s ease;
         }
 
@@ -120,57 +107,39 @@
             width: 100%;
             margin: 0;
             padding: 15px;
-            background-color: rgba(0, 0, 0, 0.7); /* Fond semi-transparent pour le titre */
-            color: #fff;
+            background-color: rgba(0, 0, 0, 0.7);
             text-align: center;
-            font-size: 1.5rem; /* Taille du titre augmentée */
-            transition: background-color 0.3s ease;
+            font-size: 1.5rem;
         }
 
-        /* Effet de survol */
         .project-card:hover img {
-            transform: scale(1.1); /* Zoom sur l'image au survol */
+            transform: scale(1.1);
         }
 
-        .project-card:hover h3 {
-            background-color: rgba(0, 0, 0, 0.9); /* Fond plus foncé au survol */
-        }
-
-        /* Fenêtre de détails */
-        .details-overlay {
+        .details-overlay, .popup-overlay {
             display: none;
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.9); /* Fond noir semi-transparent */
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
             justify-content: center;
             align-items: center;
-            z-index: 1000;
+            z-index: 2000;
         }
 
-        .details-content {
-            background-color: #222; /* Fond sombre pour les détails */
+        .details-content, .popup-content {
+            background-color: #222;
             padding: 20px;
-            border-radius: 20px; /* Angles arrondis */
-            max-width: 600px;
+            border-radius: 20px;
+            max-width: 700px;
             width: 90%;
             position: relative;
+            color: white;
             box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
-            color: #fff; /* Texte en blanc */
         }
 
         .details-content h2 {
-            font-size: 1.8rem;
-            margin-bottom: 10px;
-            color: #fff;
-        }
-
-        .details-content p {
-            font-size: 1.1rem;
-            color: #ccc; /* Texte gris clair */
-            margin-bottom: 20px;
+            margin-top: 0;
         }
 
         .close-btn {
@@ -178,158 +147,149 @@
             top: 10px;
             right: 10px;
             font-size: 1.5rem;
-            color: #fff;
             cursor: pointer;
+            color: white;
+        }
+
+        .image-gallery {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin: 15px 0;
+        }
+
+        .image-gallery img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .image-gallery img:hover {
+            transform: scale(1.1);
+        }
+
+        .buttons-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .buttons-group button {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 10px;
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .buttons-group button:hover {
+            background-color: #0056b3;
+        }
+
+        .popup-content iframe {
+            width: 100%;
+            height: 400px;
+            border: none;
         }
     </style>
 </head>
 <body>
-    <!-- Bandeau de navigation -->
+
+    <!-- Navbar -->
     <nav class="navbar">
         <ul>
-            <li><a href="https://baptb.github.io/portfolio.github.io/">Accueil</a></li>
+            <li><a href="#">Accueil</a></li>
             <li>
-                <a href="https://baptb.github.io/portfolio.github.io/prepro.html">Présentation Professionnelle</a>
+                <a href="#">Présentation Professionnelle</a>
                 <ul>
-                    <li><a href="https://baptb.github.io/portfolio.github.io/etudes.html">Études</a></li>
-                    <li><a href="https://baptb.github.io/portfolio.github.io/competences.html">Compétences</a></li>
-                    <li><a href="https://baptb.github.io/portfolio.github.io/projet.html">Projets</a></li>
+                    <li><a href="#">Études</a></li>
+                    <li><a href="#">Compétences</a></li>
+                    <li><a href="#">Projets</a></li>
                 </ul>
             </li>
             <li>
-                <a href="https://baptb.github.io/portfolio.github.io/preperso.html">Présentation Personnelle</a>
+                <a href="#">Présentation Personnelle</a>
                 <ul>
-                    <li><a href="https://baptb.github.io/portfolio.github.io/hobby.html">Hobby</a></li>
+                    <li><a href="#">Hobby</a></li>
                 </ul>
             </li>
         </ul>
     </nav>
 
-    <!-- Contenu principal -->
+    <!-- Cartes projets -->
     <div class="container">
-        <!-- Projet 1 -->
         <div class="project-card" onclick="showDetails('details1')">
-            <img src="Optiplant.jpg" alt="Projet 1">
+            <img src="Optiplant.jpg" alt="Optiplant" />
             <h3>Optiplant</h3>
-        </div>
-
-        <!-- Projet 2 -->
-        <div class="project-card" onclick="showDetails('details2')">
-            <img src="Affiche_transmetteur.jpg" alt="Projet 2">
-            <h3>Transmetteur longue distance</h3>
-        </div>
-
-        <!-- Projet 3 -->
-        <div class="project-card" onclick="showDetails('details3')">
-            <img src="https://via.placeholder.com/400x400" alt="Projet 3">
-            <h3>Déambulateur intelligent</h3>
-        </div>
-
-        <!-- Projet 4 -->
-        <div class="project-card" onclick="showDetails('details4')">
-            <img src="Nanopi.jpg" alt="Projet 4">
-            <h3>Nanopi Neo2</h3>
-        </div>
-
-        <!-- Projet 5 -->
-        <div class="project-card" onclick="showDetails('details5')">
-            <img src="Robot_auto.jpg" alt="Projet 5">
-            <h3>Robot Autonome</h3>
-        </div>
-
-        <!-- Projet 6 -->
-        <div class="project-card" onclick="showDetails('details6')">
-            <img src="https://via.placeholder.com/400x400" alt="Projet 6">
-            <h3>Carte domotique</h3>
-        </div>
-
-        <!-- Projet 7 -->
-        <div class="project-card" onclick="showDetails('details7')">
-            <img src="https://via.placeholder.com/400x400" alt="Projet 7">
-            <h3>Projet 7</h3>
         </div>
     </div>
 
-    <!-- Fenêtre de détails pour Projet 1 -->
+    <!-- Détails projet 1 -->
     <div id="details1" class="details-overlay">
         <div class="details-content">
             <span class="close-btn" onclick="closeDetails('details1')">&times;</span>
             <h2>Optiplant</h2>
-            <p>Le projet optiplant est un site internet qui recense toutes les informations d'une base de données d'une ombrière. Cette dernière a pour objectif d'assurer la croissance des plantes.</p>
+            <p>Site internet pour suivre les données d'une ombrière assurant la croissance des plantes.</p>
+
+            <!-- Galerie -->
+            <div class="image-gallery">
+                <img src="Optiplant.jpg" alt="Optiplant 1" />
+                <img src="Optiplant2.jpg" alt="Optiplant 2" />
+            </div>
+
+            <!-- Boutons -->
+            <div class="buttons-group">
+                <button onclick="showPopup('popupVideo')">Voir la vidéo</button>
+                <button onclick="showPopup('popupDoc')">Documentation</button>
+            </div>
         </div>
     </div>
 
-    <!-- Fenêtre de détails pour Projet 2 -->
-    <div id="details2" class="details-overlay">
-        <div class="details-content">
-            <span class="close-btn" onclick="closeDetails('details2')">&times;</span>
-            <h2>Transmetteur longue distance</h2>
-            <p>explication</p>
+    <!-- Popup vidéo -->
+    <div id="popupVideo" class="popup-overlay">
+        <div class="popup-content">
+            <span class="close-btn" onclick="closePopup('popupVideo')">&times;</span>
+            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
         </div>
     </div>
 
-    <!-- Fenêtre de détails pour Projet 3 -->
-    <div id="details3" class="details-overlay">
-        <div class="details-content">
-            <span class="close-btn" onclick="closeDetails('details3')">&times;</span>
-            <h2>Déambulateur intelligent</h2>
-            <p>explication</p>
+    <!-- Popup documentation -->
+    <div id="popupDoc" class="popup-overlay">
+        <div class="popup-content">
+            <span class="close-btn" onclick="closePopup('popupDoc')">&times;</span>
+            <p>Ici, vous trouverez la documentation complète du projet Optiplant (PDF, texte, ou liens).</p>
         </div>
     </div>
 
-    <!-- Fenêtre de détails pour Projet 4 -->
-    <div id="details4" class="details-overlay">
-        <div class="details-content">
-            <span class="close-btn" onclick="closeDetails('details4')">&times;</span>
-            <h2>Nanopi Neo2</h2>
-            <p>explication</p>
-        </div>
-    </div>
-
-    <!-- Fenêtre de détails pour Projet 5 -->
-    <div id="details5" class="details-overlay">
-        <div class="details-content">
-            <span class="close-btn" onclick="closeDetails('details5')">&times;</span>
-            <h2>Robot Autonome</h2>
-            <p>Projet 2ème année gies</p>
-        </div>
-    </div>
-
-    <!-- Fenêtre de détails pour Projet 6 -->
-    <div id="details6" class="details-overlay">
-        <div class="details-content">
-            <span class="close-btn" onclick="closeDetails('details6')">&times;</span>
-            <h2>Carte domotique</h2>
-            <p>Projet 2ème année gibert</p>
-        </div>
-    </div>
-
-    <!-- Fenêtre de détails pour Projet 7 -->
-    <div id="details7" class="details-overlay">
-        <div class="details-content">
-            <span class="close-btn" onclick="closeDetails('details7')">&times;</span>
-            <h2>Projet 7 : Portfolio</h2>
-            <p>Un portfolio en ligne pour présenter mes projets et compétences. Développé avec HTML, CSS et JavaScript.</p>
-        </div>
-    </div>
-
+    <!-- JavaScript -->
     <script>
-        // Fonction pour afficher les détails
-        function showDetails(detailsId) {
-            document.getElementById(detailsId).style.display = "flex";
+        function showDetails(id) {
+            document.getElementById(id).style.display = "flex";
         }
 
-        // Fonction pour fermer les détails
-        function closeDetails(detailsId) {
-            document.getElementById(detailsId).style.display = "none";
+        function closeDetails(id) {
+            document.getElementById(id).style.display = "none";
         }
 
-        // Fermer la fenêtre de détails si on clique en dehors
+        function showPopup(id) {
+            document.getElementById(id).style.display = "flex";
+        }
+
+        function closePopup(id) {
+            document.getElementById(id).style.display = "none";
+        }
+
         window.onclick = function(event) {
-            if (event.target.classList.contains('details-overlay')) {
+            if (event.target.classList.contains('details-overlay') || event.target.classList.contains('popup-overlay')) {
                 event.target.style.display = "none";
             }
-        }
+        };
     </script>
 </body>
 </html>
