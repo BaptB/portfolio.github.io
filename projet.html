@@ -250,69 +250,254 @@
         </div>
     </div>
 
-    <!-- Fenêtre de détails pour Projet 1 -->
-    <div id="details1" class="details-overlay">
-        <div class="details-content">
-            <span class="close-btn" onclick="closeDetails('details1')">&times;</span>
-            <h2>Optiplant</h2>
-            <p>Le projet optiplant est un site internet qui recense toutes les informations d'une base de données d'une ombrière. Cette dernière a pour objectif d'assurer la croissance des plantes.</p>
-        </div>
+    <!-- Fenêtre de détails pour Projet 1 : Optiplant -->
+<div id="details1" class="details-overlay">
+  <div class="details-content">
+    <span class="close-btn" onclick="closeDetails('details1')">&times;</span>
+    <h2>Optiplant</h2>
+    <p>Optiplant est une interface web connectée à une base de données permettant de visualiser et gérer les paramètres d’une ombrière intelligente.</p>
+
+    <!-- Images cliquables -->
+    <div style="display: flex; gap: 10px; flex-wrap: wrap; justify-content: center;">
+      <img src="Optiplant.jpg" alt="Capture Optiplant" style="width: 100px; cursor: pointer; border-radius: 10px;" onclick="openImageModal('Optiplant.jpg')">
+      <img src="Optiplant2.jpg" alt="Graphique" style="width: 100px; cursor: pointer; border-radius: 10px;" onclick="openImageModal('Optiplant2.jpg')">
     </div>
 
-    <!-- Fenêtre de détails pour Projet 2 -->
+    <!-- Boutons supplémentaires -->
+    <div style="margin-top: 20px; display: flex; gap: 10px; justify-content: center;">
+      <button onclick="openSubModal('subInfo1')" style="padding: 8px 12px; border-radius: 5px; background: #007BFF; color: white; border: none;">Fonctionnement</button>
+      <button onclick="openSubModal('subInfo2')" style="padding: 8px 12px; border-radius: 5px; background: #28a745; color: white; border: none;">Technologies</button>
+    </div>
+  </div>
+</div>
+
+<!-- Image agrandie (lightbox) -->
+<div id="imageModal" class="details-overlay" onclick="this.style.display='none'">
+  <img id="imageModalContent" src="" style="max-width: 90%; max-height: 90%; border-radius: 10px;">
+</div>
+
+<!-- Petites fenêtres supplémentaires -->
+<div id="subInfo1" class="details-overlay">
+  <div class="details-content">
+    <span class="close-btn" onclick="closeDetails('subInfo1')">&times;</span>
+    <h2>Fonctionnement</h2>
+    <p>L’interface récupère les données via une API et affiche en temps réel l'humidité, la température, et la luminosité. Les utilisateurs peuvent consulter l’historique et ajuster les paramètres.</p>
+  </div>
+</div>
+
+<div id="subInfo2" class="details-overlay">
+  <div class="details-content">
+    <span class="close-btn" onclick="closeDetails('subInfo2')">&times;</span>
+    <h2>Technologies utilisées</h2>
+    <p>HTML, CSS, JavaScript, PHP pour le backend, et une base de données MySQL. Les données sont visualisées à l’aide de bibliothèques comme Chart.js.</p>
+  </div>
+</div>
+
+
     <div id="details2" class="details-overlay">
-        <div class="details-content">
-            <span class="close-btn" onclick="closeDetails('details2')">&times;</span>
-            <h2>Transmetteur longue distance</h2>
-            <p>explication</p>
-        </div>
+  <div class="details-content">
+    <span class="close-btn" onclick="closeDetails('details2')">&times;</span>
+    <h2>Driver Monitoring System</h2>
+    <p>Système embarqué de surveillance du comportement du conducteur via caméra infrarouge.</p>
+
+    <div style="display: flex; gap: 10px; flex-wrap: wrap; justify-content: center;">
+      <img src="Driver.jpg" alt="Détection conducteur" style="width: 100px; cursor: pointer; border-radius: 10px;" onclick="openImageModal('Driver.jpg')">
     </div>
 
-    <!-- Fenêtre de détails pour Projet 3 -->
+    <div style="margin-top: 20px; display: flex; gap: 10px; justify-content: center;">
+      <button onclick="openSubModal('subInfo3')">Fonctionnement</button>
+      <button onclick="openSubModal('subInfo4')">Technologies</button>
+    </div>
+  </div>
+</div>
+
+<div id="subInfo3" class="details-overlay">
+  <div class="details-content">
+    <span class="close-btn" onclick="closeDetails('subInfo3')">&times;</span>
+    <h2>Fonctionnement</h2>
+    <p>La caméra détecte la position de la tête et des yeux pour évaluer la vigilance. Des alertes sonores sont déclenchées en cas de somnolence détectée.</p>
+  </div>
+</div>
+
+<div id="subInfo4" class="details-overlay">
+  <div class="details-content">
+    <span class="close-btn" onclick="closeDetails('subInfo4')">&times;</span>
+    <h2>Technologies utilisées</h2>
+    <p>OpenCV, Python, Jetson Nano, caméra infrarouge, réseaux de neurones.</p>
+  </div>
+</div>
+
+
     <div id="details3" class="details-overlay">
-        <div class="details-content">
-            <span class="close-btn" onclick="closeDetails('details3')">&times;</span>
-            <h2>Déambulateur intelligent</h2>
-            <p>explication</p>
-        </div>
+  <div class="details-content">
+    <span class="close-btn" onclick="closeDetails('details3')">&times;</span>
+    <h2>Street View</h2>
+    <p>Application web simulant Google Street View, permettant de se déplacer dans des rues virtuelles.</p>
+
+    <div style="display: flex; gap: 10px; justify-content: center;">
+      <img src="StreetView.jpg" alt="Vue 360" style="width: 100px; cursor: pointer; border-radius: 10px;" onclick="openImageModal('StreetView.jpg')">
     </div>
 
-    <!-- Fenêtre de détails pour Projet 4 -->
+    <div style="margin-top: 20px; display: flex; gap: 10px; justify-content: center;">
+      <button onclick="openSubModal('subInfo5')">Fonctionnement</button>
+      <button onclick="openSubModal('subInfo6')">Technologies</button>
+    </div>
+  </div>
+</div>
+
+<div id="subInfo5" class="details-overlay">
+  <div class="details-content">
+    <span class="close-btn" onclick="closeDetails('subInfo5')">&times;</span>
+    <h2>Fonctionnement</h2>
+    <p>L’utilisateur peut naviguer en cliquant sur les flèches, changeant dynamiquement les images panoramiques.</p>
+  </div>
+</div>
+
+<div id="subInfo6" class="details-overlay">
+  <div class="details-content">
+    <span class="close-btn" onclick="closeDetails('subInfo6')">&times;</span>
+    <h2>Technologies utilisées</h2>
+    <p>JavaScript, HTML, CSS, API Google Maps, Three.js.</p>
+  </div>
+</div>
+
+
     <div id="details4" class="details-overlay">
-        <div class="details-content">
-            <span class="close-btn" onclick="closeDetails('details4')">&times;</span>
-            <h2>Nanopi Neo2</h2>
-            <p>explication</p>
-        </div>
+  <div class="details-content">
+    <span class="close-btn" onclick="closeDetails('details4')">&times;</span>
+    <h2>Miroir connecté</h2>
+    <p>Un miroir intelligent affichant la météo, l’heure, les infos et des messages personnalisés.</p>
+
+    <div style="display: flex; gap: 10px; justify-content: center;">
+      <img src="miroir.jpg" alt="Smart Mirror" style="width: 100px; cursor: pointer; border-radius: 10px;" onclick="openImageModal('miroir.jpg')">
     </div>
 
-    <!-- Fenêtre de détails pour Projet 5 -->
+    <div style="margin-top: 20px; display: flex; gap: 10px; justify-content: center;">
+      <button onclick="openSubModal('subInfo7')">Fonctionnement</button>
+      <button onclick="openSubModal('subInfo8')">Technologies</button>
+    </div>
+  </div>
+</div>
+
+<div id="subInfo7" class="details-overlay">
+  <div class="details-content">
+    <span class="close-btn" onclick="closeDetails('subInfo7')">&times;</span>
+    <h2>Fonctionnement</h2>
+    <p>Affichage sur écran derrière un miroir semi-transparent, mis à jour automatiquement via des API météo/news.</p>
+  </div>
+</div>
+
+<div id="subInfo8" class="details-overlay">
+  <div class="details-content">
+    <span class="close-btn" onclick="closeDetails('subInfo8')">&times;</span>
+    <h2>Technologies utilisées</h2>
+    <p>Raspberry Pi, Node.js, HTML/CSS, API météo, écran LCD.</p>
+  </div>
+</div>
+
+
     <div id="details5" class="details-overlay">
-        <div class="details-content">
-            <span class="close-btn" onclick="closeDetails('details5')">&times;</span>
-            <h2>Robot Autonome</h2>
-            <p>Projet 2ème année gies</p>
-        </div>
+  <div class="details-content">
+    <span class="close-btn" onclick="closeDetails('details5')">&times;</span>
+    <h2>Site Vitrine Handball</h2>
+    <p>Un site web dynamique pour un club de handball, présentant les équipes, actualités et résultats.</p>
+
+    <div style="display: flex; gap: 10px; justify-content: center;">
+      <img src="handball.jpg" alt="Site Handball" style="width: 100px; cursor: pointer; border-radius: 10px;" onclick="openImageModal('handball.jpg')">
     </div>
 
-    <!-- Fenêtre de détails pour Projet 6 -->
-    <div id="details6" class="details-overlay">
-        <div class="details-content">
-            <span class="close-btn" onclick="closeDetails('details6')">&times;</span>
-            <h2>Carte domotique</h2>
-            <p>Projet 2ème année gibert</p>
-        </div>
+    <div style="margin-top: 20px; display: flex; gap: 10px; justify-content: center;">
+      <button onclick="openSubModal('subInfo9')">Fonctionnement</button>
+      <button onclick="openSubModal('subInfo10')">Technologies</button>
+    </div>
+  </div>
+</div>
+
+<div id="subInfo9" class="details-overlay">
+  <div class="details-content">
+    <span class="close-btn" onclick="closeDetails('subInfo9')">&times;</span>
+    <h2>Fonctionnement</h2>
+    <p>Site vitrine avec section admin pour publier les scores, news, photos et événements.</p>
+  </div>
+</div>
+
+<div id="subInfo10" class="details-overlay">
+  <div class="details-content">
+    <span class="close-btn" onclick="closeDetails('subInfo10')">&times;</span>
+    <h2>Technologies utilisées</h2>
+    <p>WordPress + Elementor, HTML/CSS, plugins de gestion de contenu.</p>
+  </div>
+</div>
+
+
+   <div id="details6" class="details-overlay">
+  <div class="details-content">
+    <span class="close-btn" onclick="closeDetails('details6')">&times;</span>
+    <h2>Installation de la téléphonie 3CX</h2>
+    <p>Mise en place d’un système de téléphonie IP dans une PME avec gestion des appels et configuration réseau.</p>
+
+    <div style="display: flex; gap: 10px; justify-content: center;">
+      <img src="3cx.png" alt="Téléphonie IP" style="width: 100px; cursor: pointer; border-radius: 10px;" onclick="openImageModal('3cx.png')">
     </div>
 
-    <!-- Fenêtre de détails pour Projet 7 -->
+    <div style="margin-top: 20px; display: flex; gap: 10px; justify-content: center;">
+      <button onclick="openSubModal('subInfo11')">Fonctionnement</button>
+      <button onclick="openSubModal('subInfo12')">Technologies</button>
+    </div>
+  </div>
+</div>
+
+<div id="subInfo11" class="details-overlay">
+  <div class="details-content">
+    <span class="close-btn" onclick="closeDetails('subInfo11')">&times;</span>
+    <h2>Fonctionnement</h2>
+    <p>Installation du serveur 3CX, création des extensions, configuration des téléphones et du réseau local.</p>
+  </div>
+</div>
+
+<div id="subInfo12" class="details-overlay">
+  <div class="details-content">
+    <span class="close-btn" onclick="closeDetails('subInfo12')">&times;</span>
+    <h2>Technologies utilisées</h2>
+    <p>3CX, SIP, VoIP, VLAN, Windows Server, téléphones Yealink.</p>
+  </div>
+</div>
+
+
     <div id="details7" class="details-overlay">
-        <div class="details-content">
-            <span class="close-btn" onclick="closeDetails('details7')">&times;</span>
-            <h2>Projet 7 : Portfolio</h2>
-            <p>Un portfolio en ligne pour présenter mes projets et compétences. Développé avec HTML, CSS et JavaScript.</p>
-        </div>
+  <div class="details-content">
+    <span class="close-btn" onclick="closeDetails('details7')">&times;</span>
+    <h2>Portfolio</h2>
+    <p>Site web personnel présentant mes projets, compétences et expériences professionnelles.</p>
+
+    <div style="display: flex; gap: 10px; justify-content: center;">
+      <img src="portfolio.jpg" alt="Portfolio web" style="width: 100px; cursor: pointer; border-radius: 10px;" onclick="openImageModal('portfolio.jpg')">
     </div>
 
+    <div style="margin-top: 20px; display: flex; gap: 10px; justify-content: center;">
+      <button onclick="openSubModal('subInfo13')">Fonctionnement</button>
+      <button onclick="openSubModal('subInfo14')">Technologies</button>
+    </div>
+  </div>
+</div>
+
+<div id="subInfo13" class="details-overlay">
+  <div class="details-content">
+    <span class="close-btn" onclick="closeDetails('subInfo13')">&times;</span>
+    <h2>Fonctionnement</h2>
+    <p>Navigation fluide entre les sections (projets, contact, CV), design responsive et animations modernes.</p>
+  </div>
+</div>
+
+<div id="subInfo14" class="details-overlay">
+  <div class="details-content">
+    <span class="close-btn" onclick="closeDetails('subInfo14')">&times;</span>
+    <h2>Technologies utilisées</h2>
+    <p>HTML, CSS, JavaScript, animations CSS, hébergement GitHub Pages.</p>
+  </div>
+</div>
+
+    
     <script>
         // Fonction pour afficher les détails
         function showDetails(detailsId) {
@@ -330,6 +515,17 @@
                 event.target.style.display = "none";
             }
         }
+        function openImageModal(src) {
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('imageModalContent');
+        modalImg.src = src;
+        modal.style.display = "flex";
+    }
+
+    function openSubModal(id) {
+        document.getElementById(id).style.display = "flex";
+    }
+
     </script>
 </body>
 </html>
