@@ -1,76 +1,335 @@
-<!-- Fenêtre de détails pour Projet 1 -->
-<div id="details1" class="details-overlay">
-    <div class="details-content">
-        <span class="close-btn" onclick="closeDetails('details1')">&times;</span>
-        <h2>Optiplant</h2>
-        <p><strong>Technologies :</strong> HTML, CSS, PHP, SQL</p>
-        <p><strong>Description :</strong> Site internet relié à une base de données MySQL permettant de visualiser les informations d’une ombrière intelligente (température, humidité, luminosité). Le site permet de consulter les données et de piloter l’arrosage.</p>
-        <p><strong>Objectif :</strong> Optimiser la croissance des plantes en environnement contrôlé.</p>
-    </div>
-</div>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mes Projets</title>
+    <style>
+        /* Style général */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #000; /* Fond noir */
+            color: #fff; /* Texte en blanc */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
 
-<!-- Fenêtre de détails pour Projet 2 -->
-<div id="details2" class="details-overlay">
-    <div class="details-content">
-        <span class="close-btn" onclick="closeDetails('details2')">&times;</span>
-        <h2>Transmetteur longue distance</h2>
-        <p><strong>Technologies :</strong> Module RF 433 MHz, Arduino</p>
-        <p><strong>Description :</strong> Système de transmission de données à longue distance via des ondes radio. Permet l’envoi d’informations simples comme la température ou un signal d’alerte entre deux points éloignés.</p>
-        <p><strong>Objectif :</strong> Établir une communication fiable sans passer par Internet ou Bluetooth.</p>
-    </div>
-</div>
+        /* Bandeau de navigation */
+        .navbar {
+            width: 100%;
+            background-color: #222; /* Fond sombre pour le bandeau */
+            padding: 10px 20px;
+            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: center; /* Centrer les catégories principales */
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+        }
 
-<!-- Fenêtre de détails pour Projet 3 -->
-<div id="details3" class="details-overlay">
-    <div class="details-content">
-        <span class="close-btn" onclick="closeDetails('details3')">&times;</span>
-        <h2>Déambulateur intelligent</h2>
-        <p><strong>Technologies :</strong> Arduino, capteurs ultrason, capteurs IR</p>
-        <p><strong>Description :</strong> Conception d’un déambulateur équipé de capteurs pour détecter les obstacles et prévenir l’utilisateur en temps réel via un retour sonore ou lumineux.</p>
-        <p><strong>Objectif :</strong> Améliorer la sécurité et l’autonomie des personnes âgées.</p>
-    </div>
-</div>
+        .navbar ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+        }
 
-<!-- Fenêtre de détails pour Projet 4 -->
-<div id="details4" class="details-overlay">
-    <div class="details-content">
-        <span class="close-btn" onclick="closeDetails('details4')">&times;</span>
-        <h2>Nanopi Neo2</h2>
-        <p><strong>Technologies :</strong> Nanopi Neo2, Linux, SSH</p>
-        <p><strong>Description :</strong> Mise en place d’un mini-serveur avec un Nanopi Neo2. Configuration réseau, mise en place d’un serveur web léger et utilisation à distance via SSH.</p>
-        <p><strong>Objectif :</strong> Expérimenter avec les micro-ordinateurs à bas coût pour héberger des services personnels.</p>
-    </div>
-</div>
+        .navbar ul li {
+            position: relative;
+        }
 
-<!-- Fenêtre de détails pour Projet 5 -->
-<div id="details5" class="details-overlay">
-    <div class="details-content">
-        <span class="close-btn" onclick="closeDetails('details5')">&times;</span>
-        <h2>Robot Autonome</h2>
-        <p><strong>Technologies :</strong> Arduino, moteurs DC, capteurs infrarouges</p>
-        <p><strong>Description :</strong> Robot mobile capable de suivre une ligne noire au sol de façon autonome. Programmation du comportement de suivi et détection des obstacles.</p>
-        <p><strong>Projet :</strong> Réalisé en 2ème année GIES</p>
-    </div>
-</div>
+        .navbar ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.1rem;
+            padding: 10px 15px;
+            transition: color 0.3s ease;
+        }
 
-<!-- Fenêtre de détails pour Projet 6 -->
-<div id="details6" class="details-overlay">
-    <div class="details-content">
-        <span class="close-btn" onclick="closeDetails('details6')">&times;</span>
-        <h2>Carte domotique</h2>
-        <p><strong>Technologies :</strong> ESP32, MQTT, Node-RED</p>
-        <p><strong>Description :</strong> Développement d’une carte domotique connectée permettant de contrôler des lumières, capteurs de mouvement, et température via Wi-Fi et interface web.</p>
-        <p><strong>Projet :</strong> Réalisé en 2ème année, projet GIBERT</p>
-    </div>
-</div>
+        .navbar ul li a:hover {
+            color: #007BFF; /* Changement de couleur au survol */
+        }
 
-<!-- Fenêtre de détails pour Projet 7 -->
-<div id="details7" class="details-overlay">
-    <div class="details-content">
-        <span class="close-btn" onclick="closeDetails('details7')">&times;</span>
-        <h2>Projet 7 : Portfolio</h2>
-        <p><strong>Technologies :</strong> HTML, CSS, JavaScript</p>
-        <p><strong>Description :</strong> Création d’un site web personnel pour présenter mes projets, compétences et parcours. Responsive, clair et accessible depuis n’importe quel appareil.</p>
-        <p><strong>Objectif :</strong> Valoriser mes expériences professionnelles et académiques.</p>
+        /* Sous-menus */
+        .navbar ul li ul {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #333;
+            border-radius: 5px;
+            padding: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .navbar ul li:hover ul {
+            display: block;
+        }
+
+        .navbar ul li ul li {
+            margin: 5px 0;
+        }
+
+        .navbar ul li ul li a {
+            font-size: 1rem;
+            padding: 8px 12px;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Grille responsive */
+            gap: 20px;
+            padding: 20px;
+            max-width: 1200px;
+            width: 100%;
+            margin-top: 80px; /* Pour éviter que le contenu soit caché sous le bandeau */
+        }
+
+        .project-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px; /* Angles arrondis */
+            background-color: #222; /* Fond sombre pour les cartes */
+            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1); /* Ombre claire */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            aspect-ratio: 1 / 1; /* Carrés parfaits */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ajuste l'image pour couvrir la zone */
+            border-radius: 20px; /* Angles arrondis */
+            transition: transform 0.3s ease;
+        }
+
+        .project-card h3 {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            margin: 0;
+            padding: 15px;
+            background-color: rgba(0, 0, 0, 0.7); /* Fond semi-transparent pour le titre */
+            color: #fff;
+            text-align: center;
+            font-size: 1.5rem; /* Taille du titre augmentée */
+            transition: background-color 0.3s ease;
+        }
+
+        /* Effet de survol */
+        .project-card:hover img {
+            transform: scale(1.1); /* Zoom sur l'image au survol */
+        }
+
+        .project-card:hover h3 {
+            background-color: rgba(0, 0, 0, 0.9); /* Fond plus foncé au survol */
+        }
+
+        /* Fenêtre de détails */
+        .details-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9); /* Fond noir semi-transparent */
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .details-content {
+            background-color: #222; /* Fond sombre pour les détails */
+            padding: 20px;
+            border-radius: 20px; /* Angles arrondis */
+            max-width: 600px;
+            width: 90%;
+            position: relative;
+            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+            color: #fff; /* Texte en blanc */
+        }
+
+        .details-content h2 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .details-content p {
+            font-size: 1.1rem;
+            color: #ccc; /* Texte gris clair */
+            margin-bottom: 20px;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 1.5rem;
+            color: #fff;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <!-- Bandeau de navigation -->
+    <nav class="navbar">
+        <ul>
+            <li><a href="https://baptb.github.io/portfolio.github.io/">Accueil</a></li>
+            <li>
+                <a href="https://baptb.github.io/portfolio.github.io/prepro.html">Présentation Professionnelle</a>
+                <ul>
+                    <li><a href="https://baptb.github.io/portfolio.github.io/etudes.html">Études</a></li>
+                    <li><a href="https://baptb.github.io/portfolio.github.io/competences.html">Compétences</a></li>
+                    <li><a href="https://baptb.github.io/portfolio.github.io/projet.html">Projets</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="https://baptb.github.io/portfolio.github.io/preperso.html">Présentation Personnelle</a>
+                <ul>
+                    <li><a href="https://baptb.github.io/portfolio.github.io/hobby.html">Hobby</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Contenu principal -->
+    <div class="container">
+        <!-- Projet 1 -->
+        <div class="project-card" onclick="showDetails('details1')">
+            <img src="Optiplant.jpg" alt="Projet 1">
+            <h3>Optiplant</h3>
+        </div>
+
+        <!-- Projet 2 -->
+        <div class="project-card" onclick="showDetails('details2')">
+            <img src="Affiche_transmetteur.jpg" alt="Projet 2">
+            <h3>Transmetteur longue distance</h3>
+        </div>
+
+        <!-- Projet 3 -->
+        <div class="project-card" onclick="showDetails('details3')">
+            <img src="https://via.placeholder.com/400x400" alt="Projet 3">
+            <h3>Déambulateur intelligent</h3>
+        </div>
+
+        <!-- Projet 4 -->
+        <div class="project-card" onclick="showDetails('details4')">
+            <img src="Nanopi.jpg" alt="Projet 4">
+            <h3>Nanopi Neo2</h3>
+        </div>
+
+        <!-- Projet 5 -->
+        <div class="project-card" onclick="showDetails('details5')">
+            <img src="Robot_auto.jpg" alt="Projet 5">
+            <h3>Robot Autonome</h3>
+        </div>
+
+        <!-- Projet 6 -->
+        <div class="project-card" onclick="showDetails('details6')">
+            <img src="https://via.placeholder.com/400x400" alt="Projet 6">
+            <h3>Carte domotique</h3>
+        </div>
+
+        <!-- Projet 7 -->
+        <div class="project-card" onclick="showDetails('details7')">
+            <img src="https://via.placeholder.com/400x400" alt="Projet 7">
+            <h3>Projet 7</h3>
+        </div>
     </div>
-</div>
+
+    <!-- Fenêtre de détails pour Projet 1 -->
+    <div id="details1" class="details-overlay">
+        <div class="details-content">
+            <span class="close-btn" onclick="closeDetails('details1')">&times;</span>
+            <h2>Optiplant</h2>
+            <p>Le projet optiplant est un site internet qui recense toutes les informations d'une base de données d'une ombrière. Cette dernière a pour objectif d'assurer la croissance des plantes.</p>
+        </div>
+    </div>
+
+    <!-- Fenêtre de détails pour Projet 2 -->
+    <div id="details2" class="details-overlay">
+        <div class="details-content">
+            <span class="close-btn" onclick="closeDetails('details2')">&times;</span>
+            <h2>Transmetteur longue distance</h2>
+            <p>explication</p>
+        </div>
+    </div>
+
+    <!-- Fenêtre de détails pour Projet 3 -->
+    <div id="details3" class="details-overlay">
+        <div class="details-content">
+            <span class="close-btn" onclick="closeDetails('details3')">&times;</span>
+            <h2>Déambulateur intelligent</h2>
+            <p>explication</p>
+        </div>
+    </div>
+
+    <!-- Fenêtre de détails pour Projet 4 -->
+    <div id="details4" class="details-overlay">
+        <div class="details-content">
+            <span class="close-btn" onclick="closeDetails('details4')">&times;</span>
+            <h2>Nanopi Neo2</h2>
+            <p>explication</p>
+        </div>
+    </div>
+
+    <!-- Fenêtre de détails pour Projet 5 -->
+    <div id="details5" class="details-overlay">
+        <div class="details-content">
+            <span class="close-btn" onclick="closeDetails('details5')">&times;</span>
+            <h2>Robot Autonome</h2>
+            <p>Projet 2ème année gies</p>
+        </div>
+    </div>
+
+    <!-- Fenêtre de détails pour Projet 6 -->
+    <div id="details6" class="details-overlay">
+        <div class="details-content">
+            <span class="close-btn" onclick="closeDetails('details6')">&times;</span>
+            <h2>Carte domotique</h2>
+            <p>Projet 2ème année gibert</p>
+        </div>
+    </div>
+
+    <!-- Fenêtre de détails pour Projet 7 -->
+    <div id="details7" class="details-overlay">
+        <div class="details-content">
+            <span class="close-btn" onclick="closeDetails('details7')">&times;</span>
+            <h2>Projet 7 : Portfolio</h2>
+            <p>Un portfolio en ligne pour présenter mes projets et compétences. Développé avec HTML, CSS et JavaScript.</p>
+        </div>
+    </div>
+
+    <script>
+        // Fonction pour afficher les détails
+        function showDetails(detailsId) {
+            document.getElementById(detailsId).style.display = "flex";
+        }
+
+        // Fonction pour fermer les détails
+        function closeDetails(detailsId) {
+            document.getElementById(detailsId).style.display = "none";
+        }
+
+        // Fermer la fenêtre de détails si on clique en dehors
+        window.onclick = function(event) {
+            if (event.target.classList.contains('details-overlay')) {
+                event.target.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
