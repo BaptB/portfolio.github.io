@@ -404,23 +404,14 @@ function showDetails(detailsId) {
     overlay.style.display = "flex";
 
     const fills = overlay.querySelectorAll('.progress-fill');
-
-    // Forcer le reflow
-    requestAnimationFrame(() => {
-        fills.forEach(fill => {
-            const targetWidth = fill.dataset.progress || '70%'; // Valeur par défaut : 70%
-            fill.style.width = targetWidth;
-        });
-    });
-
-
-    // Animation dans la prochaine frame
-    requestAnimationFrame(() => {
-        fills.forEach(fill => {
-            fill.style.width = '70%';
-        });
+    fills.forEach(fill => {
+        const targetWidth = fill.dataset.progress || '70%';
+        // Forcer le reflow avant animation
+        fill.offsetWidth; 
+        fill.style.width = targetWidth;
     });
 }
+
 
 
 // Fonction pour fermer les détails
@@ -434,10 +425,15 @@ function closeDetails(detailsId) {
 
         // Fermer la fenêtre de détails si on clique en dehors
         window.onclick = function(event) {
-            if (event.target.classList.contains('details-overlay')) {
-                event.target.style.display = "none";
-            }
-        }
+    if (event.target.classList.contains('details-overlay')) {
+        event.target.style.display = "none";
+        const fills = event.target.querySelectorAll('.progress-fill');
+        fills.forEach(fill => {
+            fill.style.width = '0%';
+        });
+    }
+}
+
     </script>
 </body>
 </html>
