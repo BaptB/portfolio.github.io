@@ -194,12 +194,13 @@
         overflow: hidden;
         }
 
-        .progress-fill {
+       .progress-fill {
         height: 100%;
         background-color: #4caf50;
         width: 0%;
         transition: width 1.5s ease-in-out;
         }
+
     </style>
 </head>
 <body>
@@ -312,12 +313,24 @@
     <script>
        // Fonction pour afficher les détails
 function showDetails(detailsId) {
-    document.getElementById(detailsId).style.display = "flex";
-    const fills = document.querySelectorAll(`#${detailsId} .progress-fill`);
+    const overlay = document.getElementById(detailsId);
+    overlay.style.display = "flex";
+
+    const fills = overlay.querySelectorAll('.progress-fill');
+
+    // Forcer le reflow
     fills.forEach(fill => {
-        fill.style.width = '70%';
+        fill.style.width = '0%'; // Réinitialise pour éviter les glitches
+    });
+
+    // Animation dans la prochaine frame
+    requestAnimationFrame(() => {
+        fills.forEach(fill => {
+            fill.style.width = '70%';
+        });
     });
 }
+
 
 // Fonction pour fermer les détails
 function closeDetails(detailsId) {
