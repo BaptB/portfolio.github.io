@@ -179,9 +179,8 @@
             cursor: pointer;
         }
         table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 10px;
+        min-width: 800px;
+        width: max-content;
         }
 
         td {
@@ -204,12 +203,11 @@
         transition: width 1.5s ease-in-out;
         }
         .table-wrapper {
-        max-height: 300px; /* Limite la hauteur visible */
-        overflow-y: auto;  /* Active un scroll vertical si nécessaire */
-        border: 1px solid #333; /* Optionnel : pour encadrer visuellement */
+        max-width: 100%;
+        overflow-x: auto;
+        border: 1px solid #333;
         margin-top: 10px;
         }
-
         /* Barre de défilement personnalisée (optionnel) */
         .table-wrapper::-webkit-scrollbar {
          width: 8px;
