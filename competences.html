@@ -145,15 +145,18 @@
         }
 
         .details-content {
-            background-color: #222; /* Fond sombre pour les détails */
-            padding: 20px;
-            border-radius: 20px; /* Angles arrondis */
-            max-width: 600px;
-            width: 90%;
-            position: relative;
-            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
-            color: #fff; /* Texte en blanc */
+        background-color: #222;
+        padding: 20px;
+        border-radius: 20px;
+        width: auto;
+        max-width: 90vw;  /* largeur responsive */
+        max-height: 90vh; /* empêche le dépassement vertical */
+        overflow: auto;   /* scroll si contenu dépasse */
+        position: relative;
+        box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+        color: #fff;
         }
+
 
         .details-content h2 {
             font-size: 1.8rem;
