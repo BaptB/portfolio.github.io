@@ -261,7 +261,7 @@
                 <tr>
                     <td>Année</td>
                     <td>Description azdsqdqdzdsdqsdqzadsqdqzadsqdfeqzadsdqzasqsqzadsqd</td>
-                    <td><div class="progress-bar"><div class="progress-fill" style="width: 0%;"></div></div></td>
+                    <td><div class="progress-bar"><div class="progress-fill" data-progress="85%" style="width: 0%;"></div></div></td>
                 </tr>
                 <tr>
                     <td>BUT1</td>
@@ -319,9 +319,13 @@ function showDetails(detailsId) {
     const fills = overlay.querySelectorAll('.progress-fill');
 
     // Forcer le reflow
-    fills.forEach(fill => {
-        fill.style.width = '0%'; // Réinitialise pour éviter les glitches
+    requestAnimationFrame(() => {
+        fills.forEach(fill => {
+            const targetWidth = fill.dataset.progress || '70%'; // Valeur par défaut : 70%
+            fill.style.width = targetWidth;
+        });
     });
+
 
     // Animation dans la prochaine frame
     requestAnimationFrame(() => {
