@@ -227,30 +227,9 @@
     <!-- Contenu principal -->
     <div class="container">
         <!-- Compétence 1 : Maintenir -->
-        <div class="skill-card" onclick="showDetails('details1')">
-            <img src="https://cdn-icons-png.flaticon.com/512/4260/4260892.png" alt="Maintenir">
-            <table>
-                <tr>
-                    <td>Compétence 1</td>
-                    <td>Description 1</td>
-                    <td><div class="progress-bar"><div class="progress-fill" style="width: 0%;"></div></div></td>
-                </tr>
-                <tr>
-                    <td>Compétence 2</td>
-                    <td>Description 2</td>
-                    <td><div class="progress-bar"><div class="progress-fill" style="width: 0%;"></div></div></td>
-                </tr>
-                <tr>
-                    <td>Compétence 3</td>
-                    <td>Description 3</td>
-                    <td><div class="progress-bar"><div class="progress-fill" style="width: 0%;"></div></div></td>
-                </tr>
-                <tr>
-                    <td>Compétence 4</td>
-                    <td>Description 4</td>
-                    <td><div class="progress-bar"><div class="progress-fill" style="width: 0%;"></div></div></td>
-                </tr>
-            </table>
+        <div class="skill-card" onclick="showDetails('details2')">
+            <img src="https://cdn-icons-png.flaticon.com/512/4260/4260895.png" alt="Vérifier">
+            <h3>Maintenir</h3>
         </div>
 
         <!-- Compétence 2 : Vérifier -->
@@ -277,9 +256,31 @@
         <div class="details-content">
             <span class="close-btn" onclick="closeDetails('details1')">&times;</span>
             <h2>Maintenir</h2>
-            <p>Compétence en maintenance des systèmes et applications. Capacité à diagnostiquer et résoudre les problèmes techniques pour assurer la continuité des services.</p>
+            <table>
+                <tr>
+                    <td>Compétence 1</td>
+                    <td>Description 1</td>
+                    <td><div class="progress-bar"><div class="progress-fill" style="width: 0%;"></div></div></td>
+                </tr>
+                <tr>
+                    <td>Compétence 2</td>
+                    <td>Description 2</td>
+                    <td><div class="progress-bar"><div class="progress-fill" style="width: 0%;"></div></div></td>
+                </tr>
+                <tr>
+                    <td>Compétence 3</td>
+                    <td>Description 3</td>
+                    <td><div class="progress-bar"><div class="progress-fill" style="width: 0%;"></div></div></td>
+                </tr>
+                <tr>
+                    <td>Compétence 4</td>
+                    <td>Description 4</td>
+                    <td><div class="progress-bar"><div class="progress-fill" style="width: 0%;"></div></div></td>
+                </tr>
+            </table>
         </div>
     </div>
+
 
     <!-- Fenêtre de détails pour Compétence 2 : Vérifier -->
     <div id="details2" class="details-overlay">
@@ -325,12 +326,25 @@
                 event.target.style.display = "none";
             }
         }
-        window.addEventListener('load', () => {
-            const fills = document.querySelectorAll('.progress-fill');
-            fills.forEach(fill => {
-                fill.style.width = '70%';
-            });
+        function showDetails(id) {
+        document.getElementById(id).style.display = 'flex';
+
+        // Déclencher l'animation de la barre de progression
+        const fills = document.querySelectorAll(`#${id} .progress-fill`);
+        fills.forEach(fill => {
+            fill.style.width = '70%';
         });
+    }
+
+    function closeDetails(id) {
+        document.getElementById(id).style.display = 'none';
+
+        // Réinitialiser les barres pour pouvoir rejouer l’animation si rouvert
+        const fills = document.querySelectorAll(`#${id} .progress-fill`);
+        fills.forEach(fill => {
+            fill.style.width = '0%';
+        });
+    }
     </script>
 </body>
 </html>
