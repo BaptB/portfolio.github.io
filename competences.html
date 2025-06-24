@@ -310,25 +310,23 @@
     </div>
 
     <script>
-        // Fonction pour afficher les détails
-        function showDetails(detailsId) {
-            document.getElementById(detailsId).style.display = "flex";
-            // Déclencher l'animation de la barre de progression
-            const fills = document.querySelectorAll(`#${id} .progress-fill`);
-            fills.forEach(fill => {
-                fill.style.width = '70%';
-            });
-        }
+       // Fonction pour afficher les détails
+function showDetails(detailsId) {
+    document.getElementById(detailsId).style.display = "flex";
+    const fills = document.querySelectorAll(`#${detailsId} .progress-fill`);
+    fills.forEach(fill => {
+        fill.style.width = '70%';
+    });
+}
 
-        // Fonction pour fermer les détails
-        function closeDetails(detailsId) {
-            document.getElementById(detailsId).style.display = "none";
-            // Réinitialiser les barres pour pouvoir rejouer l’animation si rouvert
-            const fills = document.querySelectorAll(`#${id} .progress-fill`);
-            fills.forEach(fill => {
-                fill.style.width = '0%';
-            });
-        }
+// Fonction pour fermer les détails
+function closeDetails(detailsId) {
+    document.getElementById(detailsId).style.display = "none";
+    const fills = document.querySelectorAll(`#${detailsId} .progress-fill`);
+    fills.forEach(fill => {
+        fill.style.width = '0%';
+    });
+}
 
         // Fermer la fenêtre de détails si on clique en dehors
         window.onclick = function(event) {
