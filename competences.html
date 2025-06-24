@@ -203,6 +203,22 @@
         width: 0%;
         transition: width 1.5s ease-in-out;
         }
+        .table-wrapper {
+        max-height: 300px; /* Limite la hauteur visible */
+        overflow-y: auto;  /* Active un scroll vertical si nécessaire */
+        border: 1px solid #333; /* Optionnel : pour encadrer visuellement */
+        margin-top: 10px;
+        }
+
+        /* Barre de défilement personnalisée (optionnel) */
+        .table-wrapper::-webkit-scrollbar {
+         width: 8px;
+        }
+        .table-wrapper::-webkit-scrollbar-thumb {
+        background-color: #555;
+        border-radius: 4px;
+        }
+
 
     </style>
 </head>
@@ -260,6 +276,7 @@
         <div class="details-content">
             <span class="close-btn" onclick="closeDetails('details1')">&times;</span>
             <h2>Maintenir</h2>
+            <div class="table-wrapper">
             <table>
                 <tr>
                     <td>Année</td>
