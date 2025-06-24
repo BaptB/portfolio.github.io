@@ -175,6 +175,31 @@
             color: #fff;
             cursor: pointer;
         }
+        table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+        }
+
+        td {
+        padding: 8px;
+        border: 1px solid #ddd;
+        }
+
+        .progress-bar {
+        width: 100px;
+        height: 12px;
+        background-color: #eee;
+        border-radius: 6px;
+        overflow: hidden;
+        }
+
+        .progress-fill {
+        height: 100%;
+        background-color: #4caf50;
+        width: 0%;
+        transition: width 1.5s ease-in-out;
+        }
     </style>
 </head>
 <body>
@@ -203,9 +228,30 @@
     <div class="container">
         <!-- Compétence 1 : Maintenir -->
         <div class="skill-card" onclick="showDetails('details1')">
-            <img src="https://cdn-icons-png.flaticon.com/512/4260/4260892.png" alt="Maintenir">
-            <h3>Maintenir</h3>
-        </div>
+    <img src="https://cdn-icons-png.flaticon.com/512/4260/4260892.png" alt="Maintenir">
+    <table>
+        <tr>
+            <td>Compétence 1</td>
+            <td>Description 1</td>
+            <td><div class="progress-bar"><div class="progress-fill" style="width: 0%;"></div></div></td>
+        </tr>
+        <tr>
+            <td>Compétence 2</td>
+            <td>Description 2</td>
+            <td><div class="progress-bar"><div class="progress-fill" style="width: 0%;"></div></div></td>
+        </tr>
+        <tr>
+            <td>Compétence 3</td>
+            <td>Description 3</td>
+            <td><div class="progress-bar"><div class="progress-fill" style="width: 0%;"></div></div></td>
+        </tr>
+        <tr>
+            <td>Compétence 4</td>
+            <td>Description 4</td>
+            <td><div class="progress-bar"><div class="progress-fill" style="width: 0%;"></div></div></td>
+        </tr>
+    </table>
+</div>
 
         <!-- Compétence 2 : Vérifier -->
         <div class="skill-card" onclick="showDetails('details2')">
@@ -279,6 +325,12 @@
                 event.target.style.display = "none";
             }
         }
+        window.addEventListener('load', () => {
+            const fills = document.querySelectorAll('.progress-fill');
+            fills.forEach(fill => {
+                fill.style.width = '70%';
+            });
+        });
     </script>
 </body>
 </html>
